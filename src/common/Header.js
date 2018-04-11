@@ -1,4 +1,5 @@
 import React from 'react';
+import TextInput from './TextInput';
 
 const Header = () =>
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-between">
@@ -9,11 +10,12 @@ const Header = () =>
       <div className="col-12 col-md-10">
         <form className="my-auto d-inline w-100">
           <div className="input-group">
-            <input
-              className="form-control"
+            <TextInput
               type="search"
-              placeholder="Search"
-              aria-label="Find An Activity"
+              name="search-bar"
+              label="Search Activities"
+              placeholder="Search Activities"
+              onChange={(name, value) => console.log(`${name} : ${value}`)}
             />
             <div className="input-group-btn">
               <button
