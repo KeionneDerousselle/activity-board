@@ -56,6 +56,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new webpack.ProvidePlugin({
+      $:'jquery',
+      jQuery: 'jquery',
+      jquery: 'jquery',
+      Popper:['popper.js', 'default']
     })
   ]
 };

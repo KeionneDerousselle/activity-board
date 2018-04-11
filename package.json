@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "jquery": "^3.3.1",
     "npm-run-all": "^4.1.2",
+    "popper.js": "^1.14.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   },
@@ -31,7 +34,7 @@
     "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "start": "npm-run-all --parallel webpack:dev webpack:devserver",
+    "start:dev": "npm-run-all --parallel webpack:dev webpack:devserver",
     "webpack:dev": "webpack --mode development --config webpack.dev.js --watch",
     "webpack:devserver": "webpack-dev-server --mode development --open --config webpack.dev.js",
     "test": "test"
