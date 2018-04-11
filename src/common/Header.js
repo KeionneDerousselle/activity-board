@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from './TextInput';
+import ButtonDropdown from './ButtonDropdown';
 
 const Header = () =>
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-between">
@@ -16,6 +17,11 @@ const Header = () =>
               label="Search Activities"
               placeholder="Search Activities"
               onChange={(name, value) => console.log(`${name} : ${value}`)}
+            />
+            <ButtonDropdown 
+              name="activity-search-bar"
+              wrapperClasses={['input-group-btn']}
+              onItemSelected={(name, value) => console.log(`${name} : ${value}`)}
             />
             <div className="input-group-btn">
               <button
