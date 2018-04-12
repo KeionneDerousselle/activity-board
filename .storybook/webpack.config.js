@@ -5,14 +5,18 @@
 // IMPORTANT
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
+const webpackConfig = require('../webpack.dev')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   plugins: [
     // your custom plugins
+    new MiniCssExtractPlugin('styles.[contentHash].css')
   ],
   module: {
     rules: [
       // add your custom rules.
+      ...webpackConfig.module.rules
     ],
   },
 };
