@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import DropdownItem from './DropdownItem';
+
 import {
   ButtonDropdown as ReactstrapButtonDropdown,
   DropdownItem,
@@ -35,49 +35,33 @@ class ButtonDropdown extends React.PureComponent {
   };
 
   render() {
-    const expanded = this.state.expanded;
-
-    // let wrapperClasses = 'dropdown';
-    // if (this.props.wrapperClasses) {
-    //   wrapperClasses += this.props.wrapperClasses.join(' ');
-    // }
-
+    const { expanded } = this.state;
     const buttonText = this.state.selectedItem.name || this.props.dropdownItems[0].name;
+
+    const items = this.props.dropdownItems
+      .map((item, i) =>
+        <DropdownItem
+          key={i}
+          active={item.name === buttonText}
+          onClick={() => this.handleItemSelected(item.name, item.value)}
+        >
+          {item.name}
+        </DropdownItem>);
 
     return (
       <ReactstrapButtonDropdown isOpen={expanded} toggle={this.toggleDropDown}>
-        <DropdownToggle caret color="primary">
+        <DropdownToggle
+          aria-haspopup="true"
+          aria-expanded={expanded}
+          caret
+          color="primary"
+        >
           {buttonText}
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header>Header</DropdownItem>
-          <DropdownItem disabled>Action</DropdownItem>
-          <DropdownItem>Another Action</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>Another Action</DropdownItem>
+          {items}
         </DropdownMenu>
       </ReactstrapButtonDropdown>
-      // <div className={wrapperClasses}>
-      //   <button
-      //     className="btn dropdown-toggle"
-      //     data-toggle="dropdown"
-      //     aria-haspopup="true"
-      //     aria-expanded={expanded}
-      //     onClick={this.toggleDropDown}
-      //   >
-      //     {buttonText}
-      //   </button>
-      //   <div className="dropdown-menu">
-      //     {this.props.dropdownItems.map((item, i) => {
-      //       <DropdownItem 
-      //         key={i} 
-      //         name={item.name}
-      //         onClick={this.handleItemSelected}
-      //         active={this.state.selectedItem.name === item.name}
-      //       />;
-      //     })}
-      //   </div>
-      // </div>
     );
   }
 }
