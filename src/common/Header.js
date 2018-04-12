@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput';
+import Input from './Input';
 import ButtonDropdown from './ButtonDropdown';
 
 const Header = () =>
@@ -11,7 +11,7 @@ const Header = () =>
       <div className="col-12 col-md-10">
         <form className="my-auto d-inline w-100">
           <div className="input-group">
-            <TextInput
+            <Input
               type="search"
               name="search-bar"
               label="Search Activities"
