@@ -65,14 +65,7 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     }),
-
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      jquery: 'jquery',
-      Popper: ['popper.js', 'default']
-    }),
-
+    
     new MiniCssExtractPlugin('styles.[contentHash].css')
   ]
 };

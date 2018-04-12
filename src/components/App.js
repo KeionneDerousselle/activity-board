@@ -3,8 +3,6 @@ import { Header } from '../common';
 import activities from '../api/activities';
 import Activity from './Activity';
 
-console.dir(activities);
-
 const App = () =>
   <Fragment>
     <Header />
