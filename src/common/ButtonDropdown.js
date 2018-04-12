@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { bootstrapColors } from './utils';
 
 import {
   ButtonDropdown as ReactstrapButtonDropdown,
@@ -7,6 +8,7 @@ import {
   DropdownMenu,
   DropdownToggle
 } from 'reactstrap';
+import Button from '.';
 
 const dropdownItemShape = {
   name: '',
@@ -37,6 +39,7 @@ class ButtonDropdown extends React.PureComponent {
   render() {
     const { expanded } = this.state;
     const buttonText = this.state.selectedItem.name || this.props.dropdownItems[0].name;
+    const { color } = this.props;
 
     const items = this.props.dropdownItems
       .map((item, i) =>
@@ -54,7 +57,7 @@ class ButtonDropdown extends React.PureComponent {
           aria-haspopup="true"
           aria-expanded={expanded}
           caret
-          color="primary"
+          color={color}
         >
           {buttonText}
         </DropdownToggle>
@@ -66,11 +69,16 @@ class ButtonDropdown extends React.PureComponent {
   }
 }
 
+ButtonDropdown.defaultProps = {
+  color: 'primary'
+};
+
 ButtonDropdown.propTypes = {
   name: PropTypes.string.isRequired,
   wrapperClasses: PropTypes.array,
   dropdownItems: PropTypes.arrayOf(PropTypes.shape(dropdownItemShape)),
-  onItemSelected: PropTypes.func.isRequired
+  onItemSelected: PropTypes.func.isRequired,
+  color: PropTypes.oneOf(bootstrapColors)
 };
 
 export default ButtonDropdown;
