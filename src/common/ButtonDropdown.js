@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DropdownItem from './DropdownItem';
+import { bootstrapColors } from './utils';
+
+import {
+  ButtonDropdown as ReactstrapButtonDropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle
+} from 'reactstrap';
+import Button from '.';
 
 const dropdownItemShape = {
   name: '',
@@ -21,54 +29,56 @@ class ButtonDropdown extends React.PureComponent {
   handleItemSelected = (name, value) => {
     this.setState({
       expanded: false,
-      selectedItem: { 
-        name, 
-        value 
+      selectedItem: {
+        name,
+        value
       }
     }, () => this.props.onItemSelected(name, value));
   };
 
   render() {
-    const expanded = `${this.state.expanded}`;
-
-    let wrapperClasses = 'dropdown';
-    if(this.props.wrapperClasses) {
-      wrapperClasses += this.props.wrapperClasses.join(' ');
-    }
-
+    const { expanded } = this.state;
     const buttonText = this.state.selectedItem.name || this.props.dropdownItems[0].name;
-    
+    const { color } = this.props;
+
+    const items = this.props.dropdownItems
+      .map((item, i) =>
+        <DropdownItem
+          key={i}
+          active={item.name === buttonText}
+          onClick={() => this.handleItemSelected(item.name, item.value)}
+        >
+          {item.name}
+        </DropdownItem>);
+
     return (
-      <div className={wrapperClasses}>
-        <button
-          className="btn dropdown-toggle"
-          data-toggle="dropdown"
+      <ReactstrapButtonDropdown isOpen={expanded} toggle={this.toggleDropDown}>
+        <DropdownToggle
           aria-haspopup="true"
           aria-expanded={expanded}
-          onClick={this.toggleDropDown}
+          caret
+          color={color}
         >
           {buttonText}
-        </button>
-        <div className="dropdown-menu">
-          {this.dropdownItems.map((item, i) => {
-            <DropdownItem 
-              key={i} 
-              name={item.name}
-              onClick={this.handleItemSelected}
-              active={this.state.selectedItem.name === item.name}
-            />;
-          })}
-        </div>
-      </div>
+        </DropdownToggle>
+        <DropdownMenu>
+          {items}
+        </DropdownMenu>
+      </ReactstrapButtonDropdown>
     );
   }
 }
+
+ButtonDropdown.defaultProps = {
+  color: 'primary'
+};
 
 ButtonDropdown.propTypes = {
   name: PropTypes.string.isRequired,
   wrapperClasses: PropTypes.array,
   dropdownItems: PropTypes.arrayOf(PropTypes.shape(dropdownItemShape)),
-  onItemSelected: PropTypes.func.isRequired
+  onItemSelected: PropTypes.func.isRequired,
+  color: PropTypes.oneOf(bootstrapColors)
 };
 
 export default ButtonDropdown;
