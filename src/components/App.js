@@ -5,7 +5,7 @@ import Activity from './Activity';
 
 const App = () =>
   <Fragment>
-    <Header />
+    {/* <Header /> */}
     {
       activities.map((a, i) => <Activity key={i} {...a} />)
     }
