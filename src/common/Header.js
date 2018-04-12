@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from './Input';
-import ButtonDropdown from './ButtonDropdown';
+import Button from './Button';
 
 const Header = () =>
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-between">
@@ -18,27 +18,7 @@ const Header = () =>
               placeholder="Search Activities"
               onChange={(name, value) => console.log(`${name} : ${value}`)}
             />
-            <ButtonDropdown 
-              name="activity-search-bar"
-              wrapperClasses={['input-group-btn']}
-              onItemSelected={(name, value) => console.log(`${name} : ${value}`)}
-            />
-            <div className="input-group-btn">
-              <button
-                className="btn dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Title
-              </button>
-              <div className="dropdown-menu">
-                <a href="#" className="dropdown-item">Title</a>
-                <a href="#" className="dropdown-item">Price Range</a>
-                <a href="#" className="dropdown-item">Category</a>
-                <a href="#" className="dropdown-item">Location</a>
-              </div>
-            </div>
+            <Button />
           </div>
         </form>
       </div>
