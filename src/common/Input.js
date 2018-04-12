@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input as ReactStrapInput } from 'reactstrap';
-
-const bootstrapSizes = ['xl', 'lg', 'md', 'sm', 'xs'];
+import { bootstrapSizes } from './utils';
 
 class Input extends React.PureComponent {
   constructor(props) {
