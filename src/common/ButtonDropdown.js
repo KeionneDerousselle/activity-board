@@ -8,7 +8,6 @@ import {
   DropdownMenu,
   DropdownToggle
 } from 'reactstrap';
-import Button from '.';
 
 const dropdownItemShape = {
   name: '',
