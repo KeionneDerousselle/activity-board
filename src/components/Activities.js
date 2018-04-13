@@ -21,7 +21,14 @@ const Activities = ({ activities }) =>
       {
         activities.map((a, i) => {
           return (
-            <Col key={i} span={8}>
+            <Col
+              key={i}
+              xs={24}
+              sm={24}
+              md={12}
+              lg={8}
+              xl={6}
+            >
               <Activity {...a} />
             </Col>
           );
