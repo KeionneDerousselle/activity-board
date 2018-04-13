@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bootstrapColors } from './utils';
 
-import {
-  ButtonDropdown as ReactstrapButtonDropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle
-} from 'reactstrap';
+// import {
+//   ButtonDropdown as ReactstrapButtonDropdown,
+//   DropdownItem,
+//   DropdownMenu,
+//   DropdownToggle
+// } from 'reactstrap';
 
 const dropdownItemShape = {
   name: '',
@@ -50,20 +50,21 @@ class ButtonDropdown extends React.PureComponent {
           {item.name}
         </DropdownItem>);
 
-    return (
-      <ReactstrapButtonDropdown isOpen={expanded} toggle={this.toggleDropDown}>
-        <DropdownToggle
-          aria-haspopup="true"
-          aria-expanded={expanded}
-          caret
-          color={color}
-        >
-          {buttonText}
-        </DropdownToggle>
-        <DropdownMenu>
-          {items}
-        </DropdownMenu>
-      </ReactstrapButtonDropdown>
+    return (      
+      <div>sdsdf</div>
+      // <ReactstrapButtonDropdown isOpen={expanded} toggle={this.toggleDropDown}>
+      //   <DropdownToggle
+      //     aria-haspopup="true"
+      //     aria-expanded={expanded}
+      //     caret
+      //     color={color}
+      //   >
+      //     {buttonText}
+      //   </DropdownToggle>
+      //   <DropdownMenu>
+      //     {items}
+      //   </DropdownMenu>
+      // </ReactstrapButtonDropdown>
     );
   }
 }

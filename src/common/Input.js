@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input as ReactStrapInput } from 'reactstrap';
+// import { Input as ReactStrapInput } from 'reactstrap';
 import { bootstrapSizes } from './utils';
 
 class Input extends React.PureComponent {
@@ -21,17 +21,18 @@ class Input extends React.PureComponent {
   render() {
     const { label, labelDescribedBy, readonlyRenderedAsPlainText, children, onChange, ...props } = this.props;
     return (
-      <ReactStrapInput
-        value={this.state.value}
-        onChange={ event => this.handleOnChange(event, onChange)}
-        aria-label={label}
-        id={this.state.id}
-        aria-describedby={labelDescribedBy}
-        plaintext={readonlyRenderedAsPlainText}
-        {...props}
-      >
-        {children}
-      </ReactStrapInput>
+      <div>sdsdf</div>
+      // <ReactStrapInput
+      //   value={this.state.value}
+      //   onChange={ event => this.handleOnChange(event, onChange)}
+      //   aria-label={label}
+      //   id={this.state.id}
+      //   aria-describedby={labelDescribedBy}
+      //   plaintext={readonlyRenderedAsPlainText}
+      //   {...props}
+      // >
+      //   {children}
+      // </ReactStrapInput>
     );
   }
 }
