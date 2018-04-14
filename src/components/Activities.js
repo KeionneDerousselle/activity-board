@@ -1,47 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 import Activity from './Activity';
 import { Row, Col } from 'antd';
 
-const activitiesContainerStyles = {
+const Div = styled.div({
   padding: 24,
   background: '#fff'
-};
+});
 
-const colStyles = {
+const ActivityCol = styled(Col)({
   paddingTop: 12,
   paddingBottom: 12
-};
+});
 
 const gutter = {
   xs: 8,
-  sm: 16, 
-  md: 24, 
-  lg: 32 
+  sm: 16,
+  md: 24,
+  lg: 32
 };
 
 const Activities = ({ activities }) =>
-  <div style={activitiesContainerStyles}>
+  <Div>
     <Row gutter={gutter}>
       {
         activities.map((a, i) => {
           return (
-            <Col
+            <ActivityCol
               key={i}
               xs={24}
               sm={24}
               md={12}
               lg={8}
               xl={6}
-              style={colStyles}
             >
               <Activity {...a} />
-            </Col>
+            </ActivityCol>
           );
         })
       }
     </Row>
-  </div>;
+  </Div>;
 
 Activities.propTypes = {
   activities: PropTypes.array.isRequired
