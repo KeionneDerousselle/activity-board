@@ -8,6 +8,11 @@ const activitiesContainerStyles = {
   background: '#fff'
 };
 
+const colStyles = {
+  paddingTop: 12,
+  paddingBottom: 12
+};
+
 const gutter = {
   xs: 8,
   sm: 16, 
@@ -28,6 +33,7 @@ const Activities = ({ activities }) =>
               md={12}
               lg={8}
               xl={6}
+              style={colStyles}
             >
               <Activity {...a} />
             </Col>

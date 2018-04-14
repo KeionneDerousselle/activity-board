@@ -5,7 +5,7 @@ export default [
     'rating': 2.5,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 100.75
   },
   {
     'title': 'Snowboarding',
@@ -13,7 +13,7 @@ export default [
     'rating': 3,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 300.50
   },
   {
     'title': 'Snowboarding',
@@ -21,7 +21,7 @@ export default [
     'rating': 1.5,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 0
   },
   {
     'title': 'Snowboarding',
@@ -29,7 +29,7 @@ export default [
     'rating': 1,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 39.25
   },
   {
     'title': 'Snowboarding',
@@ -37,15 +37,15 @@ export default [
     'rating': 4,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 45.89
   },
   {
     'title': 'Snowboarding',
     'description': 'On the snow...with a board...with bros?',
-    'rating': 4.5,
+    'rating': 62.5,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 3.99
   },
   {
     'title': 'Snowboarding',
@@ -61,6 +61,6 @@ export default [
     'rating': 3.5,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 0.25
   }
 ];

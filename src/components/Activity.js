@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ActivityCardContent from './ActivityCardContent';
-import { Card, Icon, Button, Tooltip } from 'antd';
+import { Card, Icon, Tooltip } from 'antd';
 const { Meta } = Card;
 
 // TODO: create price component with dollar signs
 // TODO: save images for activities
 
+const cardBodyStyles = {
+  padding: 20
+};
+
 const Activity = ({ ...activity }) =>
   <Card
+    bodyStyle={cardBodyStyles}
     title={activity.title}
     cover={
       <img
@@ -34,6 +39,7 @@ const Activity = ({ ...activity }) =>
     ]}
   >
     <Meta
+
       description={
         <ActivityCardContent
           rating={activity.rating}
