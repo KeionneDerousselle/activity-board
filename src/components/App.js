@@ -32,7 +32,7 @@ const activityTypes = [
   'Outdoor',
   'Indoor',
   'Active'
-]
+];
 
 const priceRanges = [
   'Any Price',
@@ -41,7 +41,7 @@ const priceRanges = [
   '$51 to $100',
   '$100 to $200',
   '$200 and up'
-]
+];
 
 const App = () =>
   <OuterLayout>
