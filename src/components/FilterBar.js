@@ -3,6 +3,10 @@ import React, { PureComponent } from 'react';
 import { Rate, Form, Checkbox, Row, Col, Radio } from 'antd';
 import styled, {css} from 'react-emotion';
 import PropTypes from 'prop-types';
+import PriceFilter from './FilterBarForm/PriceFilter';
+import ActivityTypeFilter from './FilterBarForm/ActivityTypeFilter';
+
+import {filterGroupStyle} from './FilterBarForm/styles';
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
@@ -22,72 +26,48 @@ const FormLabel = styled.span`
   font-size:1.2rem;
 `;
 
-
-const checkboxStyle = css`
-  color:white;
-  padding: 3px 0;
-`;
-
-const filterGroupStyle = css`
-  padding: .5rem 0;
-  padding-left: .5rem;
-`;
-
-const radioButtonStyle = css`
-  color:white;
-  padding: 3px 0;
-`;
-
 class FilterBar extends PureComponent {
     state = {
       priceRangeValue: 0,
     }
+
     onPriceRangeChange = (e) => {
+      console.log('Price Changed:', e.target.value);
       this.setState({
         priceRangeValue: e.target.value,
       });
     }
 
+    onActivityTypeChange = (e) => console.log('Activity Changed: ', e)
+    onRatingChange = (e) => console.log('Rating Changed', e);
+
     render() {
-      // const { getFieldDecorator } = this.props.form;
-
-      const checkboxes = this.props.activityTypes
-        .map((type, i) => <Col key={i} span={24}><Checkbox value={type} className={checkboxStyle}>{type}</Checkbox></Col>);
-
-      const radioButtons = this.props.priceRanges
-        .map((priceRange, i) => 
-          <Radio 
-            className={radioButtonStyle} 
-            value={i} 
-            key={i}
-          >{priceRange}
-          </Radio>);
-
       return (
         <Container>
           <FilterByTitle>
           Filter By
           </FilterByTitle>
           <Form>
-            <FormLabel>
-            Activity Types
-            </FormLabel>
-            <CheckboxGroup className={filterGroupStyle}>
-              <Row>
-                {checkboxes}
-              </Row>
-            </CheckboxGroup>
-            <FormLabel>
-              Prices
-            </FormLabel>
-            <RadioGroup className={ filterGroupStyle } onChange={this.onPriceRangeChange} value={this.state.priceRangeValue}>
-              {radioButtons}
-            </RadioGroup>
-            <FormLabel>
-            Rating
-            </FormLabel>
+            <FormLabel>Activity Types</FormLabel>
+            <ActivityTypeFilter
+              className={filterGroupStyle}
+              activityTypes={this.props.activityTypes}
+              onTypesChanged={this.onActivityTypeChange}
+            />
+            <FormLabel>Prices</FormLabel>
+            <PriceFilter 
+              className={ filterGroupStyle } 
+              onPriceRangeChange={this.onPriceRangeChange}
+              priceRanges={this.props.priceRanges}
+              priceRangeValue={this.state.priceRangeValue}
+            />
+            <FormLabel>Rating</FormLabel>
             <div>
-              <Rate allowHalf defaultValue={1}/>
+              <Rate 
+                allowHalf 
+                defaultValue={1} 
+                onChange={this.onRatingChange}
+              />
             </div>
           </Form>
         </Container>
