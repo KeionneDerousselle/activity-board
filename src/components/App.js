@@ -1,49 +1,45 @@
 import React from 'react';
+
 import '../styles/styles.css';
+import styled from 'react-emotion';
 
 import { Header } from '../common';
 import activities from '../api/activities';
 import Activities from './Activities';
 import MainSideBar from './MainSideBar';
+import FilterBar from './FilterBar';
+import Footer from './Footer';
 
 import { Layout } from 'antd';
-import FilterBar from './FilterBar';
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 
-const outerLayoutStyle = {
+const OuterLayout = styled(Layout)({
   height: '100%'
-};
+});
 
-const innerLayoutStyle = {
+const InnerLayout = styled(Layout)({
   display: 'flex',
   flexDirection: 'column'
-};
+});
 
-const contentStyles = {
+const StyledContent = styled(Content)({
   margin: '24px 16px 0',
   overflow: 'initial',
   flex: '1 0 auto'
-};
-
-const footerStyles = {
-  textAlign: 'center',
-  flexShrink: 0
-};
+});
 
 const App = () =>
-  <Layout style={outerLayoutStyle}>
+  <OuterLayout>
     <Header />
     <MainSideBar>
       <FilterBar/>
     </MainSideBar>
-    <Layout style={innerLayoutStyle}>
-      <Content style={contentStyles}>
+    <InnerLayout>
+      <StyledContent>
         <Activities activities={activities} />
-      </Content>
-      <Footer style={footerStyles}>
-        Created by Keionne Derouselle
-      </Footer>
-    </Layout>
-  </Layout>;
+      </StyledContent>
+      <Footer />
+    </InnerLayout>
+  </OuterLayout>;
 
 export default App;
