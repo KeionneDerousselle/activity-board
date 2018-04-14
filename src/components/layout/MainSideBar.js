@@ -6,7 +6,6 @@ const { Sider } = Layout;
 
 const mainSideBarStyles = {
   overflow: 'auto',
-  height: '100vh',
   left: 0
 };
 
