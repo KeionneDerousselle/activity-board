@@ -5,7 +5,6 @@ import { Header } from '../common';
 import activities from '../api/activities';
 import Activities from './Activities';
 import MainSideBar from './MainSideBar';
-import ActivityFilters from './ActivityFilters';
 
 import { Layout } from 'antd';
 import FilterBar from './FilterBar';
