@@ -3,12 +3,10 @@ import React from 'react';
 import '../styles/styles.css';
 import styled from 'react-emotion';
 
-import { Header } from '../common';
+import { Header, MainSideBar, Footer} from './layout';
 import activities from '../api/activities';
-import Activities from './Activities';
-import MainSideBar from './MainSideBar';
-import FilterBar from './FilterBar';
-import Footer from './Footer';
+import { Activities } from './activities';
+import { FilterBar } from './common/filters';
 
 import { Layout } from 'antd';
 const { Content } = Layout;
