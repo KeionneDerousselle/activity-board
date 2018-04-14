@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import styled from 'react-emotion';
 import { Layout } from 'antd';
 const { Sider } = Layout;
 
@@ -25,7 +25,6 @@ class MainSideBar extends React.Component {
         collapsedWidth="0"
         collapsible
         onCollapse={this.handleCollapse}
-        style={mainSideBarStyles}
         {...otherProps}
       >
         {children}
@@ -39,4 +38,6 @@ MainSideBar.propTypes = {
   children: PropTypes.node
 };
 
-export default MainSideBar;
+const StyledMainSideBar = styled(MainSideBar)(mainSideBarStyles);
+
+export default StyledMainSideBar;

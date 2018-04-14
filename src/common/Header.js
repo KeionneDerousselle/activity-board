@@ -1,13 +1,15 @@
 import React from 'react';
+import { css } from 'emotion';
+
 import { Layout } from 'antd';
 const AntDHeader = Layout.Header;
 
-const headerStyles = {
+const headerStyles = css({
   backgroundColor: '#fff',
   padding: 0
-};
+});
 
 const Header = () =>
-  <AntDHeader style={headerStyles}/>;
+  <AntDHeader className={headerStyles}/>;
 
 export default Header;

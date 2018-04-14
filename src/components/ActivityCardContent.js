@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 import { Row, Col, Rate, Tooltip } from 'antd';
 import { PriceAsRating } from '../common';
 import { toCurrency } from '../common/utils';
 
-const priceDivStyles = {
+const PriceCol = styled(Col)({
   textAlign: 'right'
-};
+});
 
-const ratingStyles = {
+const Rating = styled(Rate)({
   fontSize: 17
-};
+});
 
 const ActivityCardContent = ({ rating, description, price }) => {
   const currency = toCurrency(price);
@@ -19,18 +20,17 @@ const ActivityCardContent = ({ rating, description, price }) => {
     <div>
       <Row type="flex" align="middle">
         <Col span={20}>
-          <Rate
+          <Rating
             allowHalf
             disabled
             defaultValue={rating}
-            style={ratingStyles}
           />
         </Col>
-        <Col span={4} style={priceDivStyles}>
+        <PriceCol span={4}>
           <Tooltip title={currency || 'Free'} placement="top">
             <PriceAsRating price={price} />
           </Tooltip>
-        </Col>
+        </PriceCol>
       </Row>
       <div>
         <p>
