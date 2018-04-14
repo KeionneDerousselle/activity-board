@@ -42,7 +42,7 @@ export default [
   {
     'title': 'Snowboarding',
     'description': 'On the snow...with a board...with bros?',
-    'rating': 62.5,
+    'rating': 2.5,
     'type': 'Outdoor Activity',
     'tags': [],
     'price': 3.99
