@@ -1,16 +1,11 @@
 import React, { PureComponent } from 'react';
-// import { Form, FormGroup, FormText, Label, Input } from 'reactstrap';
-import { Rate, Form, Checkbox, Row, Col, Radio } from 'antd';
-import styled, {css} from 'react-emotion';
+import { Rate, Form } from 'antd';
+import styled from 'react-emotion';
 import PropTypes from 'prop-types';
 import PriceFilter from './FilterBarForm/PriceFilter';
 import ActivityTypeFilter from './FilterBarForm/ActivityTypeFilter';
 
 import {filterGroupStyle} from './FilterBarForm/styles';
-
-const FormItem = Form.Item;
-const RadioGroup = Radio.Group;
-const CheckboxGroup = Checkbox.Group;
 
 const Container = styled.div`
   margin-left: .8rem;
@@ -38,7 +33,7 @@ class FilterBar extends PureComponent {
       });
     }
 
-    onActivityTypeChange = (e) => console.log('Activity Changed: ', e)
+    onActivityTypeChange = (e) => console.log('Activity Changed: ', e);
     onRatingChange = (e) => console.log('Rating Changed', e);
 
     render() {
