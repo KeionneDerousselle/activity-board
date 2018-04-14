@@ -28,11 +28,26 @@ const StyledContent = styled(Content)({
   flex: '1 0 auto'
 });
 
+const activityTypes = [
+  'Outdoor',
+  'Indoor',
+  'Active'
+]
+
+const priceRanges = [
+  'Any Price',
+  '$10 and below',
+  '$11 to $50',
+  '$51 to $100',
+  '$100 to $200',
+  '$200 and up'
+]
+
 const App = () =>
   <OuterLayout>
     <Header />
     <MainSideBar>
-      <FilterBar/>
+      <FilterBar activityTypes={activityTypes} priceRanges={priceRanges}/>
     </MainSideBar>
     <InnerLayout>
       <StyledContent>
