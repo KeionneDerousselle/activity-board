@@ -8,6 +8,7 @@ import MainSideBar from './MainSideBar';
 import ActivityFilters from './ActivityFilters';
 
 import { Layout } from 'antd';
+import FilterBar from './FilterBar';
 const { Content, Footer } = Layout;
 
 const outerLayoutStyle = {
@@ -35,7 +36,7 @@ const App = () =>
   <Layout style={outerLayoutStyle}>
     <Header />
     <MainSideBar>
-      <ActivityFilters />
+      <FilterBar/>
     </MainSideBar>
     <Layout style={innerLayoutStyle}>
       <Content style={contentStyles}>
