@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { Rate, Form } from 'antd';
 import styled from 'react-emotion';
 import PropTypes from 'prop-types';
-import PriceFilter from './FilterBarForm/PriceFilter';
-import ActivityTypeFilter from './FilterBarForm/ActivityTypeFilter';
+import PriceFilter from './PriceFilter';
+import ActivityTypeFilter from './ActivityTypeFilter';
 
-import {filterGroupStyle} from './FilterBarForm/styles';
+import { filterGroupStyle } from './styles';
 
 const Container = styled.div`
   margin-left: .8rem;
