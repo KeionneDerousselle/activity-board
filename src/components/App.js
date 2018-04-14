@@ -16,7 +16,6 @@ const outerLayoutStyle = {
 };
 
 const innerLayoutStyle = {
-  marginLeft: 200,
   display: 'flex',
   flexDirection: 'column'
 };
