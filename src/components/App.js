@@ -5,7 +5,6 @@ import { Header } from '../common';
 import activities from '../api/activities';
 import Activities from './Activities';
 import MainSideBar from './MainSideBar';
-import ActivityFilters from './ActivityFilters';
 
 import { Layout } from 'antd';
 import FilterBar from './FilterBar';
@@ -16,7 +15,6 @@ const outerLayoutStyle = {
 };
 
 const innerLayoutStyle = {
-  marginLeft: 200,
   display: 'flex',
   flexDirection: 'column'
 };
