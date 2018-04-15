@@ -5,7 +5,6 @@ import '../styles/styles.css';
 import styled from 'react-emotion';
 
 import { Header, MainSideBar, Footer, Content } from './layout';
-import { Activities } from './activities';
 import { FilterBar } from './common/filters';
 
 import { Layout } from 'antd';
@@ -59,9 +58,7 @@ class App extends React.Component {
         </MainSideBar>
         <InnerLayout>
           <Header />
-          <Content isLoading={activities.isFetching}>
-            <Activities activities={activities.items} />
-          </Content>
+          <Content isLoading={activities.isFetching} />
           <Footer />
         </InnerLayout>
       </OuterLayout>
