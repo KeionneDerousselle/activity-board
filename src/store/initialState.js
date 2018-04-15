@@ -1,7 +1,7 @@
 export default {
   activitiesFiltered: false,
   activities: {
-    isFetching: false,
+    isFetching: true,
     didInvalidate: false,
     items: []
   },

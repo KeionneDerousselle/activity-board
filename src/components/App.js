@@ -7,6 +7,7 @@ import styled from 'react-emotion';
 import { Header, MainSideBar, Footer } from './layout';
 import { Activities } from './activities';
 import { FilterBar } from './common/filters';
+import { Spinner } from './common';
 
 import { Layout } from 'antd';
 const { Content } = Layout;
@@ -25,6 +26,13 @@ const InnerLayout = styled(Layout)({
   flexDirection: 'column'
 });
 
+const StyledContent = styled(Content)(props => ({
+  display: props.loading && 'flex',
+  textAlign: props.loading && 'center',
+  justifyContent: props.loading && 'center',
+  alignItems: props.loading && 'center'
+}));
+
 const activityTypes = [
   'Outdoor',
   'Indoor',
@@ -42,16 +50,22 @@ const priceRanges = [
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.actions.fetchActivitiesIfNeeded();
+    //this.props.actions.fetchActivitiesIfNeeded();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.activities !== this.props.activities) {
-      this.props.actions.fetchActivitiesIfNeeded();
-    }
+    //if (nextProps.activities !== this.props.activities) {
+     // this.props.actions.fetchActivitiesIfNeeded();
+    //}
   }
 
   render() {
+    const { activities } = this.props;
+
+    const content = activities.isFetching ? 
+      <Spinner size="large"/> :
+      <Activities activities={activities.items} />;
+    
     return (
       <OuterLayout>
         <MainSideBar>
@@ -59,9 +73,9 @@ class App extends React.Component {
         </MainSideBar>
         <InnerLayout>
           <Header />
-          <Content>
-            <Activities activities={this.props.activities.items} />
-          </Content>
+          <StyledContent loading={activities.isFetching}>
+            {content}
+          </StyledContent>
           <Footer />
         </InnerLayout>
       </OuterLayout>
