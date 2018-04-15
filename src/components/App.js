@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import '../styles/styles.css';
 import styled from 'react-emotion';
 
-import { Header, MainSideBar, Footer } from './layout';
+import { Header, MainSideBar, Footer, Content } from './layout';
 import { Activities } from './activities';
 import { FilterBar } from './common/filters';
-import { Spinner } from './common';
 
 import { Layout } from 'antd';
-const { Content } = Layout;
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,13 +23,6 @@ const InnerLayout = styled(Layout)({
   display: 'flex',
   flexDirection: 'column'
 });
-
-const StyledContent = styled(Content)(props => ({
-  display: props.loading && 'flex',
-  textAlign: props.loading && 'center',
-  justifyContent: props.loading && 'center',
-  alignItems: props.loading && 'center'
-}));
 
 const activityTypes = [
   'Outdoor',
@@ -50,22 +41,17 @@ const priceRanges = [
 
 class App extends React.Component {
   componentDidMount() {
-    //this.props.actions.fetchActivitiesIfNeeded();
+    this.props.actions.fetchActivitiesIfNeeded();
   }
 
   componentWillReceiveProps(nextProps) {
-    //if (nextProps.activities !== this.props.activities) {
-     // this.props.actions.fetchActivitiesIfNeeded();
-    //}
+    if (nextProps.activities !== this.props.activities) {
+      this.props.actions.fetchActivitiesIfNeeded();
+    }
   }
 
   render() {
     const { activities } = this.props;
-
-    const content = activities.isFetching ? 
-      <Spinner size="large"/> :
-      <Activities activities={activities.items} />;
-    
     return (
       <OuterLayout>
         <MainSideBar>
@@ -73,9 +59,9 @@ class App extends React.Component {
         </MainSideBar>
         <InnerLayout>
           <Header />
-          <StyledContent loading={activities.isFetching}>
-            {content}
-          </StyledContent>
+          <Content isLoading={activities.isFetching}>
+            <Activities activities={activities.items} />
+          </Content>
           <Footer />
         </InnerLayout>
       </OuterLayout>
