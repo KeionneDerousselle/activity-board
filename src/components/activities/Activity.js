@@ -4,7 +4,6 @@ import ActivityCardContent from './ActivityCardContent';
 import { Card, Icon, Tooltip } from 'antd';
 const { Meta } = Card;
 
-
 // TODO: create price component with dollar signs
 // TODO: save images for activities
 
