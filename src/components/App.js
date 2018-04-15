@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../styles/styles.css';
 import styled from 'react-emotion';
 
 import { Header, MainSideBar, Footer } from './layout';
-import activities from '../api/activities';
 import { Activities } from './activities';
 import { FilterBar } from './common/filters';
 
 import { Layout } from 'antd';
 const { Content } = Layout;
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { fetchActivitiesIfNeeded } from './activities/activityActions';
 
 const OuterLayout = styled(Layout)({
   height: '100%'
@@ -35,18 +40,46 @@ const priceRanges = [
   '$200 and up'
 ];
 
-const App = () =>
-  <OuterLayout>
-    <MainSideBar>
-      <FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />
-    </MainSideBar>
-    <InnerLayout>
-      <Header />
-      <Content>
-        <Activities activities={activities} />
-      </Content>
-      <Footer />
-    </InnerLayout>
-  </OuterLayout>;
+class App extends React.Component {
+  componentDidMount() {
+    this.props.actions.fetchActivitiesIfNeeded();
+  }
 
-export default App;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.activities !== this.props.activities) {
+      this.props.actions.fetchActivitiesIfNeeded();
+    }
+  }
+
+  render() {
+    return (
+      <OuterLayout>
+        <MainSideBar>
+          <FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />
+        </MainSideBar>
+        <InnerLayout>
+          <Header />
+          <Content>
+            <Activities activities={this.props.activities.items} />
+          </Content>
+          <Footer />
+        </InnerLayout>
+      </OuterLayout>
+    );
+  }
+}
+
+App.propTypes = {
+  activities: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  activities: state.activities
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ fetchActivitiesIfNeeded }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
