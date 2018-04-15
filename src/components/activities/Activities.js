@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled, {keyframes} from 'react-emotion';
+import { fadeInDown, fadeInLeft } from 'react-animations';
 import Activity from './Activity';
 import { Row, Col } from 'antd';
 
@@ -9,10 +10,23 @@ const Div = styled.div({
   background: '#fff'
 });
 
-const ActivityCol = styled(Col)({
+const fadeInDownAnimation = keyframes`${fadeInDown}`;
+const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
+const animationDelay = 0.3;
+
+const mobileBreakpoint = 767;
+const mobileQuery = `@media (max-width: ${mobileBreakpoint}px)`;
+
+
+const ActivityCol = styled(Col)( ({delay}) => ({
   paddingTop: 12,
-  paddingBottom: 12
-});
+  paddingBottom: 12,
+  opacity: 0,
+  animation: `${fadeInDownAnimation} 1s ${delay}s forwards`,
+  [mobileQuery]: {
+    animation: `${fadeInLeftAnimation} 1s ${delay}s forwards`
+  }
+}));
 
 const gutter = {
   xs: 8,
@@ -34,6 +48,7 @@ const Activities = ({ activities }) =>
               md={12}
               lg={8}
               xl={6}
+              delay={animationDelay  * i}
             >
               <Activity {...a} />
             </ActivityCol>
