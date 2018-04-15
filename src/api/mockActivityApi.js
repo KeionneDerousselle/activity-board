@@ -10,7 +10,7 @@ class ActivityApi {
   static getAllActivities = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({...activities});
+        resolve([...activities]);
       }, delay);
     });
   }
