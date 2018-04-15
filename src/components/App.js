@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import '../styles/styles.css';
 import styled from 'react-emotion';
 
-import { Header, MainSideBar, Footer } from './layout';
+import { Header, MainSideBar, Footer, Content } from './layout';
 import { Activities } from './activities';
 import { FilterBar } from './common/filters';
 
 import { Layout } from 'antd';
-const { Content } = Layout;
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -52,6 +51,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { activities } = this.props;
     return (
       <OuterLayout>
         <MainSideBar>
@@ -59,8 +59,8 @@ class App extends React.Component {
         </MainSideBar>
         <InnerLayout>
           <Header />
-          <Content>
-            <Activities activities={this.props.activities.items} />
+          <Content isLoading={activities.isFetching}>
+            <Activities activities={activities.items} />
           </Content>
           <Footer />
         </InnerLayout>
