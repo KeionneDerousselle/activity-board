@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ActivityForm from './ActivityForm';
 import { Row, Col } from 'antd';
+import { saveActivity } from './activityActions';
 
 const mdSizing = {
   span: 16,
@@ -35,7 +37,10 @@ class ManageActivity extends React.Component {
   };
 
   handleFormOnSubmit = () => {
-    console.log('Submitted');
+    const { activity } = this.state;
+    this.props.actions.saveActivity(activity)
+      .then(() => console.log('Success!'))
+      .catch(error => console.log('Failed'));
   }
 
   render() {
@@ -61,7 +66,10 @@ class ManageActivity extends React.Component {
 }
 
 ManageActivity.propTypes = {
-  activity: PropTypes.object.isRequired
+  activity: PropTypes.object.isRequired,
+  actions: PropTypes.shape({
+    saveActivity: PropTypes.func.isRequired
+  }).isRequired
 };
 
 ManageActivity.contextTypes = {
@@ -74,7 +82,6 @@ const getActivityById = (activities, id) =>
 const mapStateToProps = (state, ownProps) => {
   const activityId = ownProps.match.params.id;
   let activity = {
-    id: 'you will create an activity',
     title: '',
     price: 0,
     description: '',
@@ -94,4 +101,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(ManageActivity);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ saveActivity }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ManageActivity);
