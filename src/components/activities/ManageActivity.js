@@ -5,8 +5,8 @@ import ActivityForm from './ActivityForm';
 import { Row, Col } from 'antd';
 
 const mdSizing = {
-  span: 12,
-  offset: 6
+  span: 16,
+  offset: 4
 };
 
 const smSizing = {
@@ -68,6 +68,9 @@ ManageActivity.contextTypes = {
   router: PropTypes.object
 };
 
+const getActivityById = (activities, id) =>
+  activities.find(activity => activity.id == id);
+
 const mapStateToProps = (state, ownProps) => {
   const activityId = ownProps.match.params.id;
   let activity = {
@@ -80,10 +83,10 @@ const mapStateToProps = (state, ownProps) => {
     tags: [],
   };
 
-  if (activityId && state.activities.items.length > 0) {
-    activity = {
-      id: activityId
-    };
+  const activities = state.activities.items;
+
+  if (activityId && activities.length > 0) {
+    activity = getActivityById(activities, activityId);
   }
 
   return {
