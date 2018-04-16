@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ActivityForm from './ActivityForm';
-import { Row, Col } from 'antd';
+import { Row, Col, notification } from 'antd';
 import { saveActivity } from './activityActions';
 
 const mdSizing = {
@@ -36,11 +36,26 @@ class ManageActivity extends React.Component {
     return this.setState({ activity: activity });
   };
 
+  handleSubmitSuccess = activityTitle => {
+    notification['success']({
+      message: 'Success!',
+      description: `${activityTitle} was successfully saved.`,
+    });
+  };
+
+  handleSubmitFailed = () => {
+    notification['error']({
+      message: 'Error',
+      description: 'This activity could not be saved. Please validate all fields and try again.',
+      duration: 2
+    });
+  };
+
   handleFormOnSubmit = () => {
     const { activity } = this.state;
     this.props.actions.saveActivity(activity)
-      .then(() => console.log('Success!'))
-      .catch(error => console.log('Failed'));
+      .then(() => this.handleSubmitSuccess(activity.title))
+      .catch(error => this.handleSubmitFailed());
   }
 
   render() {
