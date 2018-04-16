@@ -5,6 +5,7 @@ import styled, { keyframes } from 'react-emotion';
 import { fadeInDown, fadeInLeft } from 'react-animations';
 import Activity from './Activity';
 import { Row, Col } from 'antd';
+import { createMediaQueryStyles, mobileBreakpoint } from './../common/utils/media';
 
 const Div = styled.div({
   padding: 24,
@@ -15,19 +16,7 @@ const fadeInDownAnimation = keyframes`${fadeInDown}`;
 const fadeInLeftAnimation = keyframes`${fadeInLeft}`;
 const animationDelay = 0.3;
 
-const mobileBreakpoint = 767;
 const mobileQuery = `@media (max-width: ${mobileBreakpoint}px)`;
-
-
-const ActivityCol = styled(Col)(({ delay }) => ({
-  paddingTop: 12,
-  paddingBottom: 12,
-  opacity: 0,
-  animation: `${fadeInDownAnimation} 1s ${delay}s forwards`,
-  [mobileQuery]: {
-    animation: `${fadeInLeftAnimation} 1s ${delay}s forwards`
-  }
-}));
 
 const gutter = {
   xs: 8,
@@ -35,6 +24,22 @@ const gutter = {
   md: 24,
   lg: 32
 };
+
+const paddingStyle = createMediaQueryStyles(gutter,
+  [{
+    properties: ['paddingTop', 'paddingBottom'],
+    modifer: v => v / 2
+  }]
+);
+
+const ActivityCol = styled(Col)(({ delay }) => ({
+  ...paddingStyle,
+  opacity: 0,
+  animation: `${fadeInDownAnimation} 1s ${delay}s forwards`,
+  [mobileQuery]: {
+    animation: `${fadeInLeftAnimation} 1s ${delay}s forwards`
+  }
+}));
 
 class Activities extends React.Component {
   componentDidMount() {
