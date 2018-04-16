@@ -1,10 +1,11 @@
 export const mobileBreakPoint = 768 - 1;
 export const breakpoints = {
-  'xl': 1600,
-  'lg': 1200,
-  'md': 992,
-  'sm': 768,
-  'xs': 576,
+  'xs': 575,
+  'sm': 576,
+  'md': 768,
+  'lg': 992,
+  'xl': 1200,
+  'xxl': 1600,
 };
 
 export const createMediaQueryStyles = (values, properties) => {
@@ -25,7 +26,9 @@ export const createMediaQueryStyles = (values, properties) => {
           }
         }
       });
-      style[`@media (max-width: ${breakpoints[b] - 1}px)`] = styleProperties;
+
+      const mediaQuery = (b === 'xs') ? 'max-width' : 'min-width';
+      style[`@media (${mediaQuery}: ${breakpoints[b]}px)`] = styleProperties; 
     }
   });
 
