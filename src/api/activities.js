@@ -1,8 +1,8 @@
 export default [
   {
     'id': 1,
-    'title': 'Snowboarding',
-    'description': 'On the snow...with a board...with bros?',
+    'title': 'Tubing',
+    'description': 'Riding down a mountain in a tube.',
     'rating': 2.5,
     'type': 'Outdoor Activity',
     'tags': [],
@@ -29,11 +29,11 @@ export default [
   {
     'id': 4,
     'title': 'The Roof',
-    'description': 'Amazing fancy gourment food in a tower',
+    'description': 'Amazing fancy gourmet food in a tower',
     'rating': 1,
     'type': 'Restaurant',
     'tags': [],
-    'price': 60.00
+    'price': 42.00
   },
   {
     'id': 5,
@@ -42,7 +42,7 @@ export default [
     'rating': 4,
     'type': 'Indoor Activity',
     'tags': [],
-    'price': 45.89
+    'price': 129.00
   },
   {
     'id': 6,
@@ -51,7 +51,7 @@ export default [
     'rating': 2.5,
     'type': 'Outdoor Activity',
     'tags': [],
-    'price': 3.99
+    'price': 9.99
   },
   {
     'id': 7,
@@ -60,7 +60,7 @@ export default [
     'rating': 5,
     'type': 'Indoor Activity',
     'tags': [],
-    'price': 3.50
+    'price': 30.00
   },
   {
     'id': 8,
@@ -69,7 +69,7 @@ export default [
     'rating': 3.5,
     'type': 'Restaurant',
     'tags': [],
-    'price': 0.25
+    'price': 10.00
   },
   {
     'id': 9,
@@ -78,6 +78,15 @@ export default [
     'rating': 3.5,
     'type': 'Restaurant',
     'tags': [],
-    'price': 0.25
+    'price': 30.00
+  },
+  {
+    'id': 10,
+    'title': 'Settebellos',
+    'description': 'Fresh Italian styled pizza and gelato.',
+    'rating': 3.5,
+    'type': 'Restaurant',
+    'tags': [],
+    'price': 20.00
   }
 ];
