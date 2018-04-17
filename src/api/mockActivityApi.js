@@ -33,7 +33,7 @@ class ActivityApi {
           activities.push(activity);
         }
 
-        resolve(activity);        
+        resolve(activity);
       }, delay);
     });
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { MainLayout } from '../layout';
 import ActivityForm from './ActivityForm';
 import { Row, Col, notification } from 'antd';
 import { saveActivity } from './activityActions';
@@ -40,6 +41,7 @@ class ManageActivity extends React.Component {
     notification['success']({
       message: 'Success!',
       description: `${activityTitle} was successfully saved.`,
+      duration: 2
     });
   };
 
@@ -60,22 +62,26 @@ class ManageActivity extends React.Component {
 
   render() {
     return (
-      <Row>
-        <Col
-          xs={smSizing}
-          sm={smSizing}
-          md={mdSizing}
-          lg={mdSizing}
-          xl={mdSizing}
-          xxl={mdSizing}
-        >
-          <ActivityForm
-            activity={this.state.activity}
-            onChange={this.handleFormOnChange}
-            onSubmit={this.handleFormOnSubmit}
-          />
-        </Col>
-      </Row>
+      <MainLayout
+        content={
+          <Row>
+            <Col
+              xs={smSizing}
+              sm={smSizing}
+              md={mdSizing}
+              lg={mdSizing}
+              xl={mdSizing}
+              xxl={mdSizing}
+            >
+              <ActivityForm
+                activity={this.state.activity}
+                onChange={this.handleFormOnChange}
+                onSubmit={this.handleFormOnSubmit}
+              />
+            </Col>
+          </Row>
+        }
+      />
     );
   }
 }

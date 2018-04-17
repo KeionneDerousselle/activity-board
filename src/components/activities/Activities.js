@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import styled, { keyframes } from 'react-emotion';
 import { fadeInDown, fadeInLeft } from 'react-animations';
 import Activity from './Activity';
@@ -41,50 +40,31 @@ const ActivityCol = styled(Col)(({ delay }) => ({
   }
 }));
 
-class Activities extends React.Component {
-  componentDidMount() {
-    // this.props.actions.fetchActivitiesIfNeeded();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // if (nextProps.activities !== this.props.activities) {
-    //   this.props.actions.fetchActivitiesIfNeeded();
-    // }
-  }
-
-  render() {
-    return (
-      <Div>
-        <Row gutter={gutter}>
-          {
-            this.props.activities.map((a, i) => {
-              return (
-                <ActivityCol
-                  key={i}
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={8}
-                  xl={6}
-                  delay={animationDelay * i}
-                >
-                  <Activity {...a} />
-                </ActivityCol>
-              );
-            })
-          }
-        </Row>
-      </Div>
-    );
-  }
-}
+const Activities = ({ activities }) =>
+  <Div>
+    <Row gutter={gutter}>
+      {
+        activities.map((a, i) => {
+          return (
+            <ActivityCol
+              key={i}
+              xs={24}
+              sm={24}
+              md={12}
+              lg={8}
+              xl={6}
+              delay={animationDelay * i}
+            >
+              <Activity {...a} />
+            </ActivityCol>
+          );
+        })
+      }
+    </Row>
+  </Div>;
 
 Activities.propTypes = {
   activities: PropTypes.array.isRequired
 };
 
-const mapStateToProps = state => ({
-  activities: state.activities.items
-});
-
-export default connect(mapStateToProps)(Activities);
+export default Activities;
