@@ -1,9 +1,8 @@
 import React from 'react';
 import { css } from 'emotion';
 
-import { Layout, Row, Col, Input } from 'antd';
+import { Layout } from 'antd';
 const AntDHeader = Layout.Header;
-const { Search } = Input;
 
 const headerStyles = css({
   padding: 0,
@@ -12,19 +11,12 @@ const headerStyles = css({
   fontSize: 14,
 });
 
-const Header = () =>
+const Header = ({ children }) =>
   <AntDHeader
     className={headerStyles}
     mode="horizontal"
   >
-    <Row type="flex" justify="space-around">
-      <Col span={22}>
-        <Search
-          placeholder="Search Activities"
-          onSearch={value => console.log(value)}
-        />
-      </Col>
-    </Row>
+    {children}
   </AntDHeader>;
 
 export default Header;

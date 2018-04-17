@@ -12,15 +12,17 @@ const InnerLayout = styled(Layout)({
 });
 
 const MainLayout = ({content, isContentLoading, header, footer}) => {
-  header = header || <Header />;
-  footer = footer || <Footer />;
   return (
     <InnerLayout>
-      {header}
+      <Header>
+        {header}
+      </Header>
       <ContentContainer isLoading={isContentLoading}>
         {content}
       </ContentContainer>
-      {footer}
+      <Footer>
+        {footer}
+      </Footer>
     </InnerLayout>
   );
 }

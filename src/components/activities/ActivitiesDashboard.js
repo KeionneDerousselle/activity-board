@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { SidebarLayout } from '../layout';
 import { FilterBar } from '../common/filters';
 import Activities from './Activities';
+import { Row, Col, Input } from 'antd';
+const { Search } = Input;
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -39,11 +41,21 @@ class ActivitiesDashboard extends React.Component {
     const { activities } = this.props;
 
     return (
-        <SidebarLayout
-          sidebar={<FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />}
-          content={<Activities activities={activities.items} />}
-          isContentLoading={activities.isFetching}
-        />
+      <SidebarLayout
+        header={
+          <Row type="flex" justify="space-around">
+            <Col span={22}>
+              <Search
+                placeholder="Search Activities"
+                onSearch={value => console.log(value)}
+              />
+            </Col>
+          </Row>
+        }
+        sidebar={<FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />}
+        content={<Activities activities={activities.items} />}
+        isContentLoading={activities.isFetching}
+      />
     );
   }
 }
