@@ -27,10 +27,6 @@ const priceRanges = [
 ];
 
 class ActivitiesDashboard extends React.Component {
-  componentDidMount() {
-    this.props.actions.fetchActivitiesIfNeeded();
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.activities !== this.props.activities) {
       this.props.actions.fetchActivitiesIfNeeded();

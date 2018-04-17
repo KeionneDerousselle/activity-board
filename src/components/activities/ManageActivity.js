@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { MainLayout } from '../layout';
 import ActivityForm from './ActivityForm';
 import { Row, Col, notification } from 'antd';
@@ -37,12 +38,18 @@ class ManageActivity extends React.Component {
     return this.setState({ activity: activity });
   };
 
+  redirect = () => {
+    this.props.history.push('/activities');
+  }
+
   handleSubmitSuccess = activityTitle => {
     notification['success']({
       message: 'Success!',
       description: `${activityTitle} was successfully saved.`,
       duration: 2
     });
+    
+    this.redirect();
   };
 
   handleSubmitFailed = () => {
@@ -126,4 +133,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ saveActivity }, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageActivity);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ManageActivity));
