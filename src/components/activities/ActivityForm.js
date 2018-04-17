@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, Rate, Select } from 'antd';
+import { Form, Input, Button, Rate, Select, InputNumber } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 const { Option } = Select;
 
 const labelColSm = { span: 24 };
-const wrapperColSm= { span: 24 };
+const wrapperColSm = { span: 24 };
 
 const labelColMd = { span: 4 };
 const wrapperColMd = { span: 18 };
@@ -99,12 +99,14 @@ class ActivityForm extends React.Component {
           {...formItemLayout}
           label="Price"
         >
-          <Input
+          <InputNumber
             name="price"
             size="large"
-            onChange={this.handleChange}
+            onChange={value => onChange('price', value)}
             value={activity.price}
             disabled={saving}
+            formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
           />
         </FormItem>
         <FormItem
