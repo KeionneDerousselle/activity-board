@@ -22,7 +22,8 @@ class ManageActivity extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      activity: { ...props.activity }
+      activity: { ...props.activity },
+      saving: false
     };
   }
 
@@ -43,24 +44,26 @@ class ManageActivity extends React.Component {
   }
 
   handleSubmitSuccess = activityTitle => {
+    this.setState({ saving: false });
+    this.redirect();
     notification['success']({
       message: 'Success!',
       description: `${activityTitle} was successfully saved.`,
-      duration: 2
+      duration: 4
     });
-    
-    this.redirect();
   };
 
   handleSubmitFailed = () => {
+    this.setState({ saving: false });
     notification['error']({
       message: 'Error',
       description: 'This activity could not be saved. Please validate all fields and try again.',
-      duration: 2
+      duration: 4
     });
   };
 
   handleFormOnSubmit = () => {
+    this.setState({ saving: true });
     const { activity } = this.state;
     this.props.actions.saveActivity(activity)
       .then(() => this.handleSubmitSuccess(activity.title))
@@ -84,6 +87,7 @@ class ManageActivity extends React.Component {
                 activity={this.state.activity}
                 onChange={this.handleFormOnChange}
                 onSubmit={this.handleFormOnSubmit}
+                saving={this.state.saving}
               />
             </Col>
           </Row>

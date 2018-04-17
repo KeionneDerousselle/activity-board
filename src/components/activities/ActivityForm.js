@@ -64,7 +64,7 @@ class ActivityForm extends React.Component {
   }
 
   render() {
-    const { activity, onSubmit, onChange } = this.props;
+    const { activity, onSubmit, onChange, saving } = this.props;
     return (
       <Form onSubmit={onSubmit}>
         <FormItem
@@ -76,6 +76,7 @@ class ActivityForm extends React.Component {
             size="large"
             onChange={this.handleChange}
             value={activity.title}
+            disabled={saving}
           />
         </FormItem>
         <FormItem
@@ -87,6 +88,7 @@ class ActivityForm extends React.Component {
             size="large"
             onChange={value => onChange('type', value)}
             value={activity.type}
+            disabled={saving}
           >
             <Option value="Restaurant">Restaurant</Option>
             <Option value="Outdoor Activity">Outdoor Activity</Option>
@@ -102,6 +104,7 @@ class ActivityForm extends React.Component {
             size="large"
             onChange={this.handleChange}
             value={activity.price}
+            disabled={saving}
           />
         </FormItem>
         <FormItem
@@ -113,6 +116,7 @@ class ActivityForm extends React.Component {
             onChange={this.handleChange}
             value={activity.description}
             autosize={textAreaAutoSize}
+            disabled={saving}
           />
         </FormItem>
         <FormItem
@@ -123,12 +127,14 @@ class ActivityForm extends React.Component {
             allowHalf
             onChange={value => onChange('rating', value)}
             value={activity.rating}
+            disabled={saving}
           />
         </FormItem>
         <FormItem {...formTailLayout}>
           <Button
             type="primary"
             onClick={onSubmit}
+            loading={saving}
           >
             Submit
           </Button>
@@ -141,7 +147,8 @@ class ActivityForm extends React.Component {
 ActivityForm.propTypes = {
   activity: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  saving: PropTypes.bool,
 };
 
 const WrappedForm = Form.create()(ActivityForm);
