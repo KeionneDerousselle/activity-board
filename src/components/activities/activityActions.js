@@ -49,3 +49,41 @@ export const fetchActivitiesIfNeeded = () =>
       return dispatch(fetchActivities());
     }
   };
+
+export const REQUEST_SAVE_ACTIVITY = 'REQUEST_SAVE_ACTIVITY';
+export const requestSaveActivity = () => ({
+  type: REQUEST_SAVE_ACTIVITY
+});
+
+export const CREATE_ACTIVITY_SUCCESS= 'CREATE_ACTIVITY_SUCCESS';
+export const createActivitySuccess = activity => ({
+  type: CREATE_ACTIVITY_SUCCESS,
+  activity
+})
+
+export const UPDATE_ACTIVITY_SUCCESS = 'UPDATE_ACTIVITY_SUCCESS';
+export const updateActivitySuccess = activity => ({
+  type: UPDATE_ACTIVITY_SUCCESS,
+  activity
+});
+
+export const REQUEST_SAVE_ACTIVITY_FAILED = 'REQUEST_SAVE_ACTIVITY_FAILED';
+export const requestSaveActivityFailed = error => ({
+  type: REQUEST_SAVE_ACTIVITY_FAILED,
+  error
+});
+
+export const saveActivity = activity =>
+  dispatch => {
+    dispatch(requestSaveActivity());
+    return ActivityApi.saveActivity(activity)
+      .then(activity => {
+        activity.id ?
+          dispatch(updateActivitySuccess(activity)) :
+          dispatch(createActivitySuccess(activity));
+      })
+      .catch(error => {
+        dispatch(requestSaveActivityFailed(error));
+        throw(error);
+      });
+  };

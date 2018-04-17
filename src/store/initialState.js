@@ -1,5 +1,7 @@
 export default {
   activitiesFiltered: false,
+  types: [],
+  tags: [],
   activities: {
     isFetching: false,
     didInvalidate: false,
