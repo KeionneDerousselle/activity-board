@@ -64,7 +64,21 @@ class ActivityForm extends React.Component {
   }
 
   render() {
-    const { activity, onSubmit, onChange, saving } = this.props;
+    const { activity, onSubmit, onChange, saving, tags } = this.props;
+
+    const tagDefaults = activity.tags ? activity.tags.map(t => {
+      return {
+        key: t,
+        label: tags[t].name
+      };
+    }) : [];
+
+    const tagOptions = tags.map(t => {
+      if (!activity.tags || activity.tags.length === 0 || !activity.tags[t.id]) {
+        return <Option key={t.id}>{t.name}</Option>;
+      }
+    });
+
     return (
       <Form onSubmit={onSubmit}>
         <FormItem
@@ -81,18 +95,18 @@ class ActivityForm extends React.Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Type"
+          label="tags"
         >
           <Select
-            name="type"
+            name="tags"
             size="large"
-            onChange={value => onChange('type', value)}
-            value={activity.type}
+            mode="multiple"
+            labelInValue
+            onChange={value => console.log(value)}
+            value={tagDefaults}
             disabled={saving}
           >
-            <Option value="Restaurant">Restaurant</Option>
-            <Option value="Outdoor Activity">Outdoor Activity</Option>
-            <Option value="Indoor Activity">Indoor Activity</Option>
+            {tagOptions}
           </Select>
         </FormItem>
         <FormItem
@@ -150,6 +164,7 @@ ActivityForm.propTypes = {
   activity: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  tags: PropTypes.array.isRequired,
   saving: PropTypes.bool,
 };
 

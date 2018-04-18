@@ -51,7 +51,6 @@ Activity.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   rating: PropTypes.number,
-  type: PropTypes.string.isRequired,
   tags: PropTypes.array,
   price: PropTypes.number
 };

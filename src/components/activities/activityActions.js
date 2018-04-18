@@ -55,11 +55,11 @@ export const requestSaveActivity = () => ({
   type: REQUEST_SAVE_ACTIVITY
 });
 
-export const CREATE_ACTIVITY_SUCCESS= 'CREATE_ACTIVITY_SUCCESS';
+export const CREATE_ACTIVITY_SUCCESS = 'CREATE_ACTIVITY_SUCCESS';
 export const createActivitySuccess = activity => ({
   type: CREATE_ACTIVITY_SUCCESS,
   activity
-})
+});
 
 export const UPDATE_ACTIVITY_SUCCESS = 'UPDATE_ACTIVITY_SUCCESS';
 export const updateActivitySuccess = activity => ({

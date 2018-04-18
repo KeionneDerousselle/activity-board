@@ -7,6 +7,7 @@ import { MainLayout } from '../layout';
 import ActivityForm from './ActivityForm';
 import { Row, Col, notification } from 'antd';
 import { saveActivity } from './activityActions';
+import { fetchTagsIfNeeded } from '../tags/tagActions';
 
 const mdSizing = {
   span: 16,
@@ -46,7 +47,7 @@ class ManageActivity extends React.Component {
   handleSubmitSuccess = activityTitle => {
     this.setState({ saving: false });
     this.redirect();
-    notification['success']({
+    notification.success({
       message: 'Success!',
       description: `${activityTitle} was successfully saved.`,
       duration: 4
@@ -55,7 +56,7 @@ class ManageActivity extends React.Component {
 
   handleSubmitFailed = () => {
     this.setState({ saving: false });
-    notification['error']({
+    notification.error({
       message: 'Error',
       description: 'This activity could not be saved. Please validate all fields and try again.',
       duration: 4
@@ -67,12 +68,13 @@ class ManageActivity extends React.Component {
     const { activity } = this.state;
     this.props.actions.saveActivity(activity)
       .then(() => this.handleSubmitSuccess(activity.title))
-      .catch(error => this.handleSubmitFailed());
+      .catch(error => this.handleSubmitFailed(error));
   }
 
   render() {
     return (
       <MainLayout
+        isContentLoading={!this.props.activity || !this.props.tags || this.props.tags.isFetching}
         content={
           <Row>
             <Col
@@ -85,6 +87,7 @@ class ManageActivity extends React.Component {
             >
               <ActivityForm
                 activity={this.state.activity}
+                tags={this.props.tags.items}
                 onChange={this.handleFormOnChange}
                 onSubmit={this.handleFormOnSubmit}
                 saving={this.state.saving}
@@ -99,8 +102,11 @@ class ManageActivity extends React.Component {
 
 ManageActivity.propTypes = {
   activity: PropTypes.object.isRequired,
+  tags: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   actions: PropTypes.shape({
-    saveActivity: PropTypes.func.isRequired
+    saveActivity: PropTypes.func.isRequired,
+    fetchTagsIfNeeded: PropTypes.func.isRequired
   }).isRequired
 };
 
@@ -108,17 +114,16 @@ ManageActivity.contextTypes = {
   router: PropTypes.object
 };
 
-const getActivityById = (activities, id) =>
-  activities.find(activity => activity.id == id);
+const getActivityById = (activities, id) => 
+  activities.find(activity => activity.id === id);
 
 const mapStateToProps = (state, ownProps) => {
-  const activityId = ownProps.match.params.id;
+  const activityId = parseInt(ownProps.match.params.id, 10);
   let activity = {
     title: '',
     price: 0,
     description: '',
     rating: 0,
-    type: '',
     tags: [],
   };
 
@@ -127,14 +132,21 @@ const mapStateToProps = (state, ownProps) => {
   if (activityId && activities.length > 0) {
     activity = getActivityById(activities, activityId);
   }
-
+  
   return {
-    activity: activity
+    activity: activity,
+    tags: state.tags
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ saveActivity }, dispatch)
+  actions: bindActionCreators(
+    {
+      saveActivity,
+      fetchTagsIfNeeded
+    },
+    dispatch
+  )
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ManageActivity));

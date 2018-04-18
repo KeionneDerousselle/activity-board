@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { SidebarLayout } from '../layout';
@@ -27,12 +27,6 @@ const priceRanges = [
 ];
 
 class ActivitiesDashboard extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.activities !== this.props.activities) {
-      this.props.actions.fetchActivitiesIfNeeded();
-    }
-  }
-
   render() {
     const { activities } = this.props;
 
@@ -50,7 +44,7 @@ class ActivitiesDashboard extends React.Component {
         }
         sidebar={<FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />}
         content={<Activities activities={activities.items} />}
-        isContentLoading={activities.isFetching}
+        isContentLoading={!activities || activities.isFetching}
       />
     );
   }

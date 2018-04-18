@@ -1,15 +1,9 @@
-import delay from './delay';
-import activities from './activities';
+import { activities } from './data';
+import { uuidv4, delay } from './utils';
 
 // This file mocks a web API by working with the hard-coded data in activities.js.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-
-const uuidv4 = () => {
-  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  )
-};
 
 class ActivityApi {
   static getAllActivities = () => {
@@ -21,11 +15,11 @@ class ActivityApi {
   }
 
   static saveActivity = activity => {
-    activity = {...activity};
-    
+    activity = { ...activity };
+
     return new Promise(resolve => {
       setTimeout(() => {
-        if(activity.id) {
+        if (activity.id) {
           const existingActivityIndex = activities.findIndex(a => a.id === activity.id);
           activities.splice(existingActivityIndex, 1, activity);
         } else {
