@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { TagInput } from '../common';
-import { Form, Input, Button, Rate, InputNumber } from 'antd';
+import { TagInput, CurrencyInput } from '../common';
+import { Form, Input, Button, Rate, } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -58,7 +58,7 @@ const textAreaAutoSize = {
   maxRows: 6
 };
 
-const StyledNumberInput = styled(InputNumber)({
+const StyledCurrencyInput = styled(CurrencyInput)({
   width: '100%'
 });
 
@@ -88,14 +88,12 @@ class ActivityForm extends React.Component {
           {...formItemLayout}
           label="Price"
         >
-          <StyledNumberInput
+          <StyledCurrencyInput
             name="price"
             size="large"
-            onChange={value => onChange('price', value)}
-            value={activity.price}
+            onPriceChange={onChange}
+            price={activity.price}
             disabled={saving}
-            formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            parser={value => value.replace(/\$\s?|(,*)/g, '')}
           />
         </FormItem>
         <FormItem
@@ -159,4 +157,3 @@ ActivityForm.propTypes = {
 const WrappedForm = Form.create()(ActivityForm);
 
 export default WrappedForm;
-

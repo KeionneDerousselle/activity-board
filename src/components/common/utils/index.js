@@ -7,4 +7,4 @@ export {
   MID_PRICE_RATING,
   HIGH_PRICE_RATING
 } from './priceToPriceRating';
-export { toCurrency } from './priceToCurrency';
+export { toCurrency, toNumber } from './currency';
