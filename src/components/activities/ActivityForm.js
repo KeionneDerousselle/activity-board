@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, Rate, Select, InputNumber } from 'antd';
+import styled from 'react-emotion';
+import { TagInput } from '../common';
+import { Form, Input, Button, Rate, InputNumber } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
-const { Option } = Select;
 
 const labelColSm = { span: 24 };
 const wrapperColSm = { span: 24 };
@@ -57,6 +58,10 @@ const textAreaAutoSize = {
   maxRows: 6
 };
 
+const StyledNumberInput = styled(InputNumber)({
+  width: '100%'
+});
+
 class ActivityForm extends React.Component {
   handleChange = event => {
     const { name, value } = event.target;
@@ -65,20 +70,6 @@ class ActivityForm extends React.Component {
 
   render() {
     const { activity, onSubmit, onChange, saving, tags } = this.props;
-
-    const tagDefaults = activity.tags ? activity.tags.map(t => {
-      return {
-        key: t,
-        label: tags[t].name
-      };
-    }) : [];
-
-    const tagOptions = tags.map(t => {
-      if (!activity.tags || activity.tags.length === 0 || !activity.tags[t.id]) {
-        return <Option key={t.id}>{t.name}</Option>;
-      }
-    });
-
     return (
       <Form onSubmit={onSubmit}>
         <FormItem
@@ -95,25 +86,9 @@ class ActivityForm extends React.Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="tags"
-        >
-          <Select
-            name="tags"
-            size="large"
-            mode="multiple"
-            labelInValue
-            onChange={value => console.log(value)}
-            value={tagDefaults}
-            disabled={saving}
-          >
-            {tagOptions}
-          </Select>
-        </FormItem>
-        <FormItem
-          {...formItemLayout}
           label="Price"
         >
-          <InputNumber
+          <StyledNumberInput
             name="price"
             size="large"
             onChange={value => onChange('price', value)}
@@ -121,6 +96,19 @@ class ActivityForm extends React.Component {
             disabled={saving}
             formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             parser={value => value.replace(/\$\s?|(,*)/g, '')}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Tags"
+        >
+          <TagInput
+            name="tags"
+            size="large"
+            allTags={tags}
+            activityTags={activity.tags}
+            onTagChange={onChange}
+            disabled={saving}
           />
         </FormItem>
         <FormItem
@@ -164,7 +152,7 @@ ActivityForm.propTypes = {
   activity: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  tags: PropTypes.array.isRequired,
+  tags: PropTypes.object.isRequired,
   saving: PropTypes.bool,
 };
 

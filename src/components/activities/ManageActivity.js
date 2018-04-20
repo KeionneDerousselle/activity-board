@@ -72,6 +72,11 @@ class ManageActivity extends React.Component {
   }
 
   render() {
+    const tags = this.props.tags.items.reduce((result, item) => {
+      result[item.id] = item.name;
+      return result;
+    }, {});
+
     return (
       <MainLayout
         isContentLoading={!this.props.activity || !this.props.tags || this.props.tags.isFetching}
@@ -87,7 +92,7 @@ class ManageActivity extends React.Component {
             >
               <ActivityForm
                 activity={this.state.activity}
-                tags={this.props.tags.items}
+                tags={tags}
                 onChange={this.handleFormOnChange}
                 onSubmit={this.handleFormOnSubmit}
                 saving={this.state.saving}
