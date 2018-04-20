@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { TagInput, CurrencyInput } from '../common';
-import { Form, Input, Button, Rate, } from 'antd';
+import { Form, Input, Button, Rate, Upload, Icon } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
+const { Dragger } = Upload;
 
 const labelColSm = { span: 24 };
 const wrapperColSm = { span: 24 };
@@ -83,6 +84,15 @@ class ActivityForm extends React.Component {
             value={activity.title}
             disabled={saving}
           />
+        </FormItem>
+        <FormItem>
+          <Dragger>
+            <p className="ant-upload-drag-icon">
+              <Icon type="inbox" />
+            </p>
+            <p className="ant-upload-text">Click or drag an image for this activity.</p>
+            <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>
+          </Dragger>
         </FormItem>
         <FormItem
           {...formItemLayout}
