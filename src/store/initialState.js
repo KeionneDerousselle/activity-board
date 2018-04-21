@@ -1,7 +1,10 @@
 export default {
   activitiesFiltered: false,
-  types: [],
-  tags: [],
+  tags: {
+    isFetching: false,
+    didInvalidate: false,
+    items: []
+  },
   activities: {
     isFetching: false,
     didInvalidate: false,

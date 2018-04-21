@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, Button, Rate, Select, InputNumber } from 'antd';
+import styled from 'react-emotion';
+import { TagInput, CurrencyInput } from '../common';
+import { Form, Input, Button, Rate, Upload, Icon } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
-const { Option } = Select;
+const { Dragger } = Upload;
 
 const labelColSm = { span: 24 };
 const wrapperColSm = { span: 24 };
@@ -57,6 +59,10 @@ const textAreaAutoSize = {
   maxRows: 6
 };
 
+const StyledCurrencyInput = styled(CurrencyInput)({
+  width: '100%'
+});
+
 class ActivityForm extends React.Component {
   handleChange = event => {
     const { name, value } = event.target;
@@ -64,7 +70,7 @@ class ActivityForm extends React.Component {
   }
 
   render() {
-    const { activity, onSubmit, onChange, saving } = this.props;
+    const { activity, onSubmit, onChange, saving, tags } = this.props;
     return (
       <Form onSubmit={onSubmit}>
         <FormItem
@@ -81,32 +87,38 @@ class ActivityForm extends React.Component {
         </FormItem>
         <FormItem
           {...formItemLayout}
-          label="Type"
+          label="Activity Image"
         >
-          <Select
-            name="type"
-            size="large"
-            onChange={value => onChange('type', value)}
-            value={activity.type}
-            disabled={saving}
-          >
-            <Option value="Restaurant">Restaurant</Option>
-            <Option value="Outdoor Activity">Outdoor Activity</Option>
-            <Option value="Indoor Activity">Indoor Activity</Option>
-          </Select>
+          <Dragger>
+            <p className="ant-upload-drag-icon">
+              <Icon type="picture" />
+            </p>
+            <p className="ant-upload-text">Click to upload or drag and drop an image for this activity.</p>
+          </Dragger>
         </FormItem>
         <FormItem
           {...formItemLayout}
           label="Price"
         >
-          <InputNumber
+          <StyledCurrencyInput
             name="price"
             size="large"
-            onChange={value => onChange('price', value)}
-            value={activity.price}
+            onPriceChange={onChange}
+            price={activity.price}
             disabled={saving}
-            formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Tags"
+        >
+          <TagInput
+            name="tags"
+            size="large"
+            allTags={tags}
+            activityTags={activity.tags}
+            onTagChange={onChange}
+            disabled={saving}
           />
         </FormItem>
         <FormItem
@@ -150,10 +162,10 @@ ActivityForm.propTypes = {
   activity: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  tags: PropTypes.object.isRequired,
   saving: PropTypes.bool,
 };
 
 const WrappedForm = Form.create()(ActivityForm);
 
 export default WrappedForm;
-
