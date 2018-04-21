@@ -85,13 +85,15 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem>
+        <FormItem
+          {...formItemLayout}
+          label="Activity Image"
+        >
           <Dragger>
             <p className="ant-upload-drag-icon">
-              <Icon type="inbox" />
+              <Icon type="picture" />
             </p>
-            <p className="ant-upload-text">Click or drag an image for this activity.</p>
-            <p className="ant-upload-hint">Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files</p>
+            <p className="ant-upload-text">Click to upload or drag and drop an image for this activity.</p>
           </Dragger>
         </FormItem>
         <FormItem
