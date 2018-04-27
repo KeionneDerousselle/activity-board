@@ -1,30 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
-import { MainLayout } from '../layout';
 import ActivityForm from './ActivityForm';
-import { Row, Col, notification } from 'antd';
+import { notification } from 'antd';
 import { saveActivity } from './activityActions';
-import { fetchTagsIfNeeded } from '../tags/tagActions';
-
-const mdSizing = {
-  span: 16,
-  offset: 4
-};
-
-const smSizing = {
-  span: 22,
-  offset: 1
-};
-
-const headerClass = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-});
 
 class ManageActivity extends React.Component {
   constructor(props, context) {
@@ -110,51 +91,23 @@ class ManageActivity extends React.Component {
       return result;
     }, {});
 
-    const headerContent =
-      <Row>
-        <Col
-          xs={smSizing}
-          sm={smSizing}
-          md={mdSizing}
-          lg={mdSizing}
-          xl={mdSizing}
-          xxl={mdSizing}
-        >
-          <div className={headerClass}>
-            <h1>{this.state.title}</h1>
-          </div>
-        </Col>
-      </Row>;
-
     return (
-      <MainLayout
-        header={headerContent}
-        isContentLoading={!this.props.activity || !this.props.tags || this.props.tags.isFetching}
-        content={
-          <Row>
-            <Col
-              xs={smSizing}
-              sm={smSizing}
-              md={mdSizing}
-              lg={mdSizing}
-              xl={mdSizing}
-              xxl={mdSizing}
-            >
-              <ActivityForm
-                activity={this.state.activity}
-                tags={tags}
-                onChange={this.handleFormOnChange}
-                onSubmit={this.handleFormOnSubmit}
-                saving={this.state.saving}
-                onImageUploading={this.handleImageUploading}
-                onImageUploadSucceeded={this.handleImageUploadSucceeded}
-                onImageUploadFailed={this.handleImageUploadFailed}
-                imageUploadUrl="//jsonplaceholder.typicode.com/posts/"
-              />
-            </Col>
-          </Row>
-        }
-      />
+      <div>
+        <div className="headerClass">
+          <h1>{this.state.title}</h1>
+        </div>
+        <ActivityForm
+          activity={this.state.activity}
+          tags={tags}
+          onChange={this.handleFormOnChange}
+          onSubmit={this.handleFormOnSubmit}
+          saving={this.state.saving}
+          onImageUploading={this.handleImageUploading}
+          onImageUploadSucceeded={this.handleImageUploadSucceeded}
+          onImageUploadFailed={this.handleImageUploadFailed}
+          imageUploadUrl="//jsonplaceholder.typicode.com/posts/"
+        />
+      </div>
     );
   }
 }
@@ -199,13 +152,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      saveActivity,
-      fetchTagsIfNeeded
-    },
-    dispatch
-  )
+  actions: bindActionCreators({ saveActivity }, dispatch)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ManageActivity));

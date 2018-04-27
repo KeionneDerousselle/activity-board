@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 import { fadeInDown, fadeInLeft } from 'react-animations';
-import Activity from './Activity';
+import ActivityCard from './ActivityCard';
 import { Row, Col } from 'antd';
 import { createMediaQueryStyles, mobileBreakpoint } from './../common/utils/media';
 
@@ -55,7 +55,7 @@ const Activities = ({ activities }) =>
               xl={6}
               delay={animationDelay * i}
             >
-              <Activity {...a} />
+              <ActivityCard {...a} />
             </ActivityCol>
           );
         })
