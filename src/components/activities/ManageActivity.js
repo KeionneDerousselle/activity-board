@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'react-emotion';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -19,18 +20,28 @@ const smSizing = {
   offset: 1
 };
 
+const headerClass = css({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+});
+
 class ManageActivity extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       activity: { ...props.activity },
-      saving: false
+      saving: false,
+      title: props.activity.id ? props.activity.title : 'Create An Activity'
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.activity.id !== nextProps.activity.id) {
-      this.setState({ activity: { ...nextProps.activity } });
+      this.setState({
+        activity: { ...nextProps.activity },
+        title: nextProps.activity.id ? nextProps.activity.title : 'Create An Activity'
+      });
     }
   }
 
@@ -72,11 +83,11 @@ class ManageActivity extends React.Component {
   }
 
   handleImageUploading = () => {
-    this.setState({saving: true});
+    this.setState({ saving: true });
   }
 
   handleImageUploadSucceeded = () => {
-    this.setState({saving: false});
+    this.setState({ saving: false });
     notification.success({
       message: 'Success!',
       description: 'Image was uploaded successfully.',
@@ -85,7 +96,7 @@ class ManageActivity extends React.Component {
   }
 
   handleImageUploadFailed = () => {
-    this.setState({saving: false});
+    this.setState({ saving: false });
     notification.error({
       message: 'Error',
       description: 'Image upload failed.',
@@ -99,8 +110,25 @@ class ManageActivity extends React.Component {
       return result;
     }, {});
 
+    const headerContent =
+      <Row>
+        <Col
+          xs={smSizing}
+          sm={smSizing}
+          md={mdSizing}
+          lg={mdSizing}
+          xl={mdSizing}
+          xxl={mdSizing}
+        >
+          <div className={headerClass}>
+            <h1>{this.state.title}</h1>
+          </div>
+        </Col>
+      </Row>;
+
     return (
       <MainLayout
+        header={headerContent}
         isContentLoading={!this.props.activity || !this.props.tags || this.props.tags.isFetching}
         content={
           <Row>
@@ -145,7 +173,7 @@ ManageActivity.contextTypes = {
   router: PropTypes.object
 };
 
-const getActivityById = (activities, id) => 
+const getActivityById = (activities, id) =>
   activities.find(activity => activity.id === id);
 
 const mapStateToProps = (state, ownProps) => {
@@ -163,7 +191,7 @@ const mapStateToProps = (state, ownProps) => {
   if (activityId && activities.length > 0) {
     activity = getActivityById(activities, activityId);
   }
-  
+
   return {
     activity: activity,
     tags: state.tags
