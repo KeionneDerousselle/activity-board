@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { css } from 'emotion';
 
 import { Layout } from 'antd';
@@ -18,5 +19,9 @@ const Header = ({ children }) =>
   >
     {children}
   </AntDHeader>;
+
+Header.propTypes = {
+  children: PropTypes.node
+};
 
 export default Header;

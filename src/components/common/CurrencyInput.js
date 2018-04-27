@@ -12,6 +12,12 @@ class CurrencyInput extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.price !== nextProps.price) {
+      this.setState({ price: toCurrency(nextProps.price) });
+    }
+  }
+
   handlePriceChange = price => this.setState({ price: price });
 
   handlePriceOnFocus = () => {
@@ -24,7 +30,7 @@ class CurrencyInput extends React.Component {
   }
 
   render() {
-    const { name, ...props} = this.props;
+    const { name, ...props } = this.props;
     return (
       <InputNumber
         name={name}
