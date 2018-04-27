@@ -71,6 +71,28 @@ class ManageActivity extends React.Component {
       .catch(error => this.handleSubmitFailed(error));
   }
 
+  handleImageUploading = () => {
+    this.setState({saving: true});
+  }
+
+  handleImageUploadSucceeded = () => {
+    this.setState({saving: false});
+    notification.success({
+      message: 'Success!',
+      description: 'Image was uploaded successfully.',
+      duration: 4
+    });
+  }
+
+  handleImageUploadFailed = () => {
+    this.setState({saving: false});
+    notification.error({
+      message: 'Error',
+      description: 'Image upload failed.',
+      duration: 4
+    });
+  }
+
   render() {
     const tags = this.props.tags.items.reduce((result, item) => {
       result[item.id] = item.name;
@@ -96,6 +118,10 @@ class ManageActivity extends React.Component {
                 onChange={this.handleFormOnChange}
                 onSubmit={this.handleFormOnSubmit}
                 saving={this.state.saving}
+                onImageUploading={this.handleImageUploading}
+                onImageUploadSucceeded={this.handleImageUploadSucceeded}
+                onImageUploadFailed={this.handleImageUploadFailed}
+                imageUploadUrl="//jsonplaceholder.typicode.com/posts/"
               />
             </Col>
           </Row>

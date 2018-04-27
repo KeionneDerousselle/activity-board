@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { TagInput, CurrencyInput } from '../common';
-import { Form, Input, Button, Rate, Upload, Icon } from 'antd';
+import { TagInput, CurrencyInput, ImageUploader } from '../common';
+import { Form, Input, Button, Rate } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
-const { Dragger } = Upload;
 
 const labelColSm = { span: 24 };
 const wrapperColSm = { span: 24 };
@@ -70,7 +69,19 @@ class ActivityForm extends React.Component {
   }
 
   render() {
-    const { activity, onSubmit, onChange, saving, tags } = this.props;
+    const
+      {
+        activity,
+        onSubmit,
+        onChange,
+        onImageUploading,
+        onImageUploadFailed,
+        onImageUploadSucceeded,
+        imageUploadUrl,
+        saving,
+        tags
+      } = this.props;
+
     return (
       <Form onSubmit={onSubmit}>
         <FormItem
@@ -89,12 +100,14 @@ class ActivityForm extends React.Component {
           {...formItemLayout}
           label="Activity Image"
         >
-          <Dragger>
-            <p className="ant-upload-drag-icon">
-              <Icon type="picture" />
-            </p>
-            <p className="ant-upload-text">Click to upload or drag and drop an image for this activity.</p>
-          </Dragger>
+          <ImageUploader
+            name="img"
+            onUploading={onImageUploading}
+            onUploadSuccess={onImageUploadSucceeded}
+            onUploadFailed={onImageUploadFailed}
+            uploadUrl={imageUploadUrl}
+          />
+
         </FormItem>
         <FormItem
           {...formItemLayout}
@@ -162,6 +175,10 @@ ActivityForm.propTypes = {
   activity: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  onImageUploading: PropTypes.func,
+  onImageUploadSucceeded: PropTypes.func.isRequired,
+  onImageUploadFailed: PropTypes.func.isRequired,
+  imageUploadUrl: PropTypes.string.isRequired,
   tags: PropTypes.object.isRequired,
   saving: PropTypes.bool,
 };
