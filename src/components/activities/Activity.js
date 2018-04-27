@@ -31,6 +31,7 @@ class Activity extends React.Component {
     };
   }
 
+  // getDerivedPropsFromState
   componentWillReceiveProps(nextProps) {
     if (this.props.activity !== nextProps.activity) {
       this.setState({ activity: { ...nextProps.activity } });
