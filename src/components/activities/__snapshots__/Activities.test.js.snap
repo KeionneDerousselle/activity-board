@@ -1,0 +1,2137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Activites Snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Activities
+    activities={
+      Array [
+        Object {
+          "description": "Riding down a mountain in a tube.",
+          "id": 1,
+          "price": 100.75,
+          "rating": 2.5,
+          "tags": Array [
+            "3",
+            "7",
+            "9",
+          ],
+          "title": "Tubing",
+        },
+        Object {
+          "description": "Amazing and awesome gourmet tacos",
+          "id": 2,
+          "price": 15,
+          "rating": 3,
+          "tags": Array [
+            "1",
+            "2",
+            "4",
+            "5",
+          ],
+          "title": "Taqueria 27",
+        },
+        Object {
+          "description": "Watch penguins do really cool things",
+          "id": 3,
+          "price": 0,
+          "rating": 1.5,
+          "tags": Array [
+            "2",
+            "10",
+          ],
+          "title": "Aquarium: Penguin Encounter",
+        },
+        Object {
+          "description": "Amazing fancy gourmet food in a tower",
+          "id": 4,
+          "price": 42,
+          "rating": 1,
+          "tags": Array [
+            "1",
+            "2",
+            "5",
+            "7",
+            "8",
+          ],
+          "title": "The Roof",
+        },
+        Object {
+          "description": "Relaxation to the max...",
+          "id": 5,
+          "price": 129,
+          "rating": 4,
+          "tags": Array [
+            "2",
+            "7",
+          ],
+          "title": "Massage at Spavia",
+        },
+        Object {
+          "description": "There's gotta be something interesting out...right?",
+          "id": 6,
+          "price": 9.99,
+          "rating": 2.5,
+          "tags": Array [
+            "2",
+            "6",
+          ],
+          "title": "Movie",
+        },
+        Object {
+          "description": "Spend an hour trying to figure out how to escape a room",
+          "id": 7,
+          "price": 30,
+          "rating": 5,
+          "tags": Array [
+            "2",
+            "9",
+          ],
+          "title": "Mystery Escape Room",
+        },
+        Object {
+          "description": "Korean BBQ. Nuff' said.",
+          "id": 8,
+          "price": 10,
+          "rating": 3.5,
+          "tags": Array [
+            "1",
+            "2",
+            "4",
+            "6",
+          ],
+          "title": "Cup Bop",
+        },
+        Object {
+          "description": "Unlimted, freshly grilled, gourmet meats.",
+          "id": 9,
+          "price": 30,
+          "rating": 3.5,
+          "tags": Array [
+            "1",
+            "2",
+            "5",
+            "7",
+          ],
+          "title": "Tucanos",
+        },
+        Object {
+          "description": "Fresh Italian styled pizza and gelato.",
+          "id": 10,
+          "price": 20,
+          "rating": 3.5,
+          "tags": Array [
+            "1",
+            "2",
+            "5",
+          ],
+          "title": "Settebellos",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <Row
+        gutter={
+          Object {
+            "lg": 32,
+            "md": 24,
+            "sm": 16,
+            "xs": 8,
+          }
+        }
+      >
+        <Styled(Col)
+          delay={0}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Riding down a mountain in a tube."
+            id={1}
+            price={100.75}
+            rating={2.5}
+            tags={
+              Array [
+                "3",
+                "7",
+                "9",
+              ]
+            }
+            title="Tubing"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={0.3}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Amazing and awesome gourmet tacos"
+            id={2}
+            price={15}
+            rating={3}
+            tags={
+              Array [
+                "1",
+                "2",
+                "4",
+                "5",
+              ]
+            }
+            title="Taqueria 27"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={0.6}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Watch penguins do really cool things"
+            id={3}
+            price={0}
+            rating={1.5}
+            tags={
+              Array [
+                "2",
+                "10",
+              ]
+            }
+            title="Aquarium: Penguin Encounter"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={0.8999999999999999}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Amazing fancy gourmet food in a tower"
+            id={4}
+            price={42}
+            rating={1}
+            tags={
+              Array [
+                "1",
+                "2",
+                "5",
+                "7",
+                "8",
+              ]
+            }
+            title="The Roof"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={1.2}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Relaxation to the max..."
+            id={5}
+            price={129}
+            rating={4}
+            tags={
+              Array [
+                "2",
+                "7",
+              ]
+            }
+            title="Massage at Spavia"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={1.5}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="There's gotta be something interesting out...right?"
+            id={6}
+            price={9.99}
+            rating={2.5}
+            tags={
+              Array [
+                "2",
+                "6",
+              ]
+            }
+            title="Movie"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={1.7999999999999998}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Spend an hour trying to figure out how to escape a room"
+            id={7}
+            price={30}
+            rating={5}
+            tags={
+              Array [
+                "2",
+                "9",
+              ]
+            }
+            title="Mystery Escape Room"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={2.1}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Korean BBQ. Nuff' said."
+            id={8}
+            price={10}
+            rating={3.5}
+            tags={
+              Array [
+                "1",
+                "2",
+                "4",
+                "6",
+              ]
+            }
+            title="Cup Bop"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={2.4}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Unlimted, freshly grilled, gourmet meats."
+            id={9}
+            price={30}
+            rating={3.5}
+            tags={
+              Array [
+                "1",
+                "2",
+                "5",
+                "7",
+              ]
+            }
+            title="Tucanos"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          delay={2.6999999999999997}
+          lg={8}
+          md={12}
+          sm={24}
+          xl={6}
+          xs={24}
+        >
+          <withRouter()
+            description="Fresh Italian styled pizza and gelato."
+            id={10}
+            price={20}
+            rating={3.5}
+            tags={
+              Array [
+                "1",
+                "2",
+                "5",
+              ]
+            }
+            title="Settebellos"
+          />
+        </Styled(Col)>
+      </Row>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Styled(Col)
+            delay={0}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Riding down a mountain in a tube."
+              id={1}
+              price={100.75}
+              rating={2.5}
+              tags={
+                Array [
+                  "3",
+                  "7",
+                  "9",
+                ]
+              }
+              title="Tubing"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={0.3}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Amazing and awesome gourmet tacos"
+              id={2}
+              price={15}
+              rating={3}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "4",
+                  "5",
+                ]
+              }
+              title="Taqueria 27"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={0.6}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Watch penguins do really cool things"
+              id={3}
+              price={0}
+              rating={1.5}
+              tags={
+                Array [
+                  "2",
+                  "10",
+                ]
+              }
+              title="Aquarium: Penguin Encounter"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={0.8999999999999999}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Amazing fancy gourmet food in a tower"
+              id={4}
+              price={42}
+              rating={1}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                  "8",
+                ]
+              }
+              title="The Roof"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={1.2}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Relaxation to the max..."
+              id={5}
+              price={129}
+              rating={4}
+              tags={
+                Array [
+                  "2",
+                  "7",
+                ]
+              }
+              title="Massage at Spavia"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={1.5}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="There's gotta be something interesting out...right?"
+              id={6}
+              price={9.99}
+              rating={2.5}
+              tags={
+                Array [
+                  "2",
+                  "6",
+                ]
+              }
+              title="Movie"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={1.7999999999999998}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Spend an hour trying to figure out how to escape a room"
+              id={7}
+              price={30}
+              rating={5}
+              tags={
+                Array [
+                  "2",
+                  "9",
+                ]
+              }
+              title="Mystery Escape Room"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={2.1}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Korean BBQ. Nuff' said."
+              id={8}
+              price={10}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "4",
+                  "6",
+                ]
+              }
+              title="Cup Bop"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={2.4}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Unlimted, freshly grilled, gourmet meats."
+              id={9}
+              price={30}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                ]
+              }
+              title="Tucanos"
+            />
+          </Styled(Col)>,
+          <Styled(Col)
+            delay={2.6999999999999997}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Fresh Italian styled pizza and gelato."
+              id={10}
+              price={20}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                ]
+              }
+              title="Settebellos"
+            />
+          </Styled(Col)>,
+        ],
+        "gutter": Object {
+          "lg": 32,
+          "md": 24,
+          "sm": 16,
+          "xs": 8,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Riding down a mountain in a tube."
+              id={1}
+              price={100.75}
+              rating={2.5}
+              tags={
+                Array [
+                  "3",
+                  "7",
+                  "9",
+                ]
+              }
+              title="Tubing"
+            />,
+            "delay": 0,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Riding down a mountain in a tube.",
+              "id": 1,
+              "price": 100.75,
+              "rating": 2.5,
+              "tags": Array [
+                "3",
+                "7",
+                "9",
+              ],
+              "title": "Tubing",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Amazing and awesome gourmet tacos"
+              id={2}
+              price={15}
+              rating={3}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "4",
+                  "5",
+                ]
+              }
+              title="Taqueria 27"
+            />,
+            "delay": 0.3,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Amazing and awesome gourmet tacos",
+              "id": 2,
+              "price": 15,
+              "rating": 3,
+              "tags": Array [
+                "1",
+                "2",
+                "4",
+                "5",
+              ],
+              "title": "Taqueria 27",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "2",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Watch penguins do really cool things"
+              id={3}
+              price={0}
+              rating={1.5}
+              tags={
+                Array [
+                  "2",
+                  "10",
+                ]
+              }
+              title="Aquarium: Penguin Encounter"
+            />,
+            "delay": 0.6,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Watch penguins do really cool things",
+              "id": 3,
+              "price": 0,
+              "rating": 1.5,
+              "tags": Array [
+                "2",
+                "10",
+              ],
+              "title": "Aquarium: Penguin Encounter",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "3",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Amazing fancy gourmet food in a tower"
+              id={4}
+              price={42}
+              rating={1}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                  "8",
+                ]
+              }
+              title="The Roof"
+            />,
+            "delay": 0.8999999999999999,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Amazing fancy gourmet food in a tower",
+              "id": 4,
+              "price": 42,
+              "rating": 1,
+              "tags": Array [
+                "1",
+                "2",
+                "5",
+                "7",
+                "8",
+              ],
+              "title": "The Roof",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "4",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Relaxation to the max..."
+              id={5}
+              price={129}
+              rating={4}
+              tags={
+                Array [
+                  "2",
+                  "7",
+                ]
+              }
+              title="Massage at Spavia"
+            />,
+            "delay": 1.2,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Relaxation to the max...",
+              "id": 5,
+              "price": 129,
+              "rating": 4,
+              "tags": Array [
+                "2",
+                "7",
+              ],
+              "title": "Massage at Spavia",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "5",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="There's gotta be something interesting out...right?"
+              id={6}
+              price={9.99}
+              rating={2.5}
+              tags={
+                Array [
+                  "2",
+                  "6",
+                ]
+              }
+              title="Movie"
+            />,
+            "delay": 1.5,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "There's gotta be something interesting out...right?",
+              "id": 6,
+              "price": 9.99,
+              "rating": 2.5,
+              "tags": Array [
+                "2",
+                "6",
+              ],
+              "title": "Movie",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "6",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Spend an hour trying to figure out how to escape a room"
+              id={7}
+              price={30}
+              rating={5}
+              tags={
+                Array [
+                  "2",
+                  "9",
+                ]
+              }
+              title="Mystery Escape Room"
+            />,
+            "delay": 1.7999999999999998,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Spend an hour trying to figure out how to escape a room",
+              "id": 7,
+              "price": 30,
+              "rating": 5,
+              "tags": Array [
+                "2",
+                "9",
+              ],
+              "title": "Mystery Escape Room",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "7",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Korean BBQ. Nuff' said."
+              id={8}
+              price={10}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "4",
+                  "6",
+                ]
+              }
+              title="Cup Bop"
+            />,
+            "delay": 2.1,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Korean BBQ. Nuff' said.",
+              "id": 8,
+              "price": 10,
+              "rating": 3.5,
+              "tags": Array [
+                "1",
+                "2",
+                "4",
+                "6",
+              ],
+              "title": "Cup Bop",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "8",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Unlimted, freshly grilled, gourmet meats."
+              id={9}
+              price={30}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                ]
+              }
+              title="Tucanos"
+            />,
+            "delay": 2.4,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Unlimted, freshly grilled, gourmet meats.",
+              "id": 9,
+              "price": 30,
+              "rating": 3.5,
+              "tags": Array [
+                "1",
+                "2",
+                "5",
+                "7",
+              ],
+              "title": "Tucanos",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "9",
+          "nodeType": "class",
+          "props": Object {
+            "children": <withRouter()
+              description="Fresh Italian styled pizza and gelato."
+              id={10}
+              price={20}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                ]
+              }
+              title="Settebellos"
+            />,
+            "delay": 2.6999999999999997,
+            "lg": 8,
+            "md": 12,
+            "sm": 24,
+            "xl": 6,
+            "xs": 24,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "description": "Fresh Italian styled pizza and gelato.",
+              "id": 10,
+              "price": 20,
+              "rating": 3.5,
+              "tags": Array [
+                "1",
+                "2",
+                "5",
+              ],
+              "title": "Settebellos",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <Row
+          gutter={
+            Object {
+              "lg": 32,
+              "md": 24,
+              "sm": 16,
+              "xs": 8,
+            }
+          }
+        >
+          <Styled(Col)
+            delay={0}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Riding down a mountain in a tube."
+              id={1}
+              price={100.75}
+              rating={2.5}
+              tags={
+                Array [
+                  "3",
+                  "7",
+                  "9",
+                ]
+              }
+              title="Tubing"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={0.3}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Amazing and awesome gourmet tacos"
+              id={2}
+              price={15}
+              rating={3}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "4",
+                  "5",
+                ]
+              }
+              title="Taqueria 27"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={0.6}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Watch penguins do really cool things"
+              id={3}
+              price={0}
+              rating={1.5}
+              tags={
+                Array [
+                  "2",
+                  "10",
+                ]
+              }
+              title="Aquarium: Penguin Encounter"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={0.8999999999999999}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Amazing fancy gourmet food in a tower"
+              id={4}
+              price={42}
+              rating={1}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                  "8",
+                ]
+              }
+              title="The Roof"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={1.2}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Relaxation to the max..."
+              id={5}
+              price={129}
+              rating={4}
+              tags={
+                Array [
+                  "2",
+                  "7",
+                ]
+              }
+              title="Massage at Spavia"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={1.5}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="There's gotta be something interesting out...right?"
+              id={6}
+              price={9.99}
+              rating={2.5}
+              tags={
+                Array [
+                  "2",
+                  "6",
+                ]
+              }
+              title="Movie"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={1.7999999999999998}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Spend an hour trying to figure out how to escape a room"
+              id={7}
+              price={30}
+              rating={5}
+              tags={
+                Array [
+                  "2",
+                  "9",
+                ]
+              }
+              title="Mystery Escape Room"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={2.1}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Korean BBQ. Nuff' said."
+              id={8}
+              price={10}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "4",
+                  "6",
+                ]
+              }
+              title="Cup Bop"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={2.4}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Unlimted, freshly grilled, gourmet meats."
+              id={9}
+              price={30}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                ]
+              }
+              title="Tucanos"
+            />
+          </Styled(Col)>
+          <Styled(Col)
+            delay={2.6999999999999997}
+            lg={8}
+            md={12}
+            sm={24}
+            xl={6}
+            xs={24}
+          >
+            <withRouter()
+              description="Fresh Italian styled pizza and gelato."
+              id={10}
+              price={20}
+              rating={3.5}
+              tags={
+                Array [
+                  "1",
+                  "2",
+                  "5",
+                ]
+              }
+              title="Settebellos"
+            />
+          </Styled(Col)>
+        </Row>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Styled(Col)
+              delay={0}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Riding down a mountain in a tube."
+                id={1}
+                price={100.75}
+                rating={2.5}
+                tags={
+                  Array [
+                    "3",
+                    "7",
+                    "9",
+                  ]
+                }
+                title="Tubing"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={0.3}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Amazing and awesome gourmet tacos"
+                id={2}
+                price={15}
+                rating={3}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "4",
+                    "5",
+                  ]
+                }
+                title="Taqueria 27"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={0.6}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Watch penguins do really cool things"
+                id={3}
+                price={0}
+                rating={1.5}
+                tags={
+                  Array [
+                    "2",
+                    "10",
+                  ]
+                }
+                title="Aquarium: Penguin Encounter"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={0.8999999999999999}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Amazing fancy gourmet food in a tower"
+                id={4}
+                price={42}
+                rating={1}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "5",
+                    "7",
+                    "8",
+                  ]
+                }
+                title="The Roof"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={1.2}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Relaxation to the max..."
+                id={5}
+                price={129}
+                rating={4}
+                tags={
+                  Array [
+                    "2",
+                    "7",
+                  ]
+                }
+                title="Massage at Spavia"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={1.5}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="There's gotta be something interesting out...right?"
+                id={6}
+                price={9.99}
+                rating={2.5}
+                tags={
+                  Array [
+                    "2",
+                    "6",
+                  ]
+                }
+                title="Movie"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={1.7999999999999998}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Spend an hour trying to figure out how to escape a room"
+                id={7}
+                price={30}
+                rating={5}
+                tags={
+                  Array [
+                    "2",
+                    "9",
+                  ]
+                }
+                title="Mystery Escape Room"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={2.1}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Korean BBQ. Nuff' said."
+                id={8}
+                price={10}
+                rating={3.5}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "4",
+                    "6",
+                  ]
+                }
+                title="Cup Bop"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={2.4}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Unlimted, freshly grilled, gourmet meats."
+                id={9}
+                price={30}
+                rating={3.5}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "5",
+                    "7",
+                  ]
+                }
+                title="Tucanos"
+              />
+            </Styled(Col)>,
+            <Styled(Col)
+              delay={2.6999999999999997}
+              lg={8}
+              md={12}
+              sm={24}
+              xl={6}
+              xs={24}
+            >
+              <withRouter()
+                description="Fresh Italian styled pizza and gelato."
+                id={10}
+                price={20}
+                rating={3.5}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "5",
+                  ]
+                }
+                title="Settebellos"
+              />
+            </Styled(Col)>,
+          ],
+          "gutter": Object {
+            "lg": 32,
+            "md": 24,
+            "sm": 16,
+            "xs": 8,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Riding down a mountain in a tube."
+                id={1}
+                price={100.75}
+                rating={2.5}
+                tags={
+                  Array [
+                    "3",
+                    "7",
+                    "9",
+                  ]
+                }
+                title="Tubing"
+              />,
+              "delay": 0,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Riding down a mountain in a tube.",
+                "id": 1,
+                "price": 100.75,
+                "rating": 2.5,
+                "tags": Array [
+                  "3",
+                  "7",
+                  "9",
+                ],
+                "title": "Tubing",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Amazing and awesome gourmet tacos"
+                id={2}
+                price={15}
+                rating={3}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "4",
+                    "5",
+                  ]
+                }
+                title="Taqueria 27"
+              />,
+              "delay": 0.3,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Amazing and awesome gourmet tacos",
+                "id": 2,
+                "price": 15,
+                "rating": 3,
+                "tags": Array [
+                  "1",
+                  "2",
+                  "4",
+                  "5",
+                ],
+                "title": "Taqueria 27",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Watch penguins do really cool things"
+                id={3}
+                price={0}
+                rating={1.5}
+                tags={
+                  Array [
+                    "2",
+                    "10",
+                  ]
+                }
+                title="Aquarium: Penguin Encounter"
+              />,
+              "delay": 0.6,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Watch penguins do really cool things",
+                "id": 3,
+                "price": 0,
+                "rating": 1.5,
+                "tags": Array [
+                  "2",
+                  "10",
+                ],
+                "title": "Aquarium: Penguin Encounter",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "3",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Amazing fancy gourmet food in a tower"
+                id={4}
+                price={42}
+                rating={1}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "5",
+                    "7",
+                    "8",
+                  ]
+                }
+                title="The Roof"
+              />,
+              "delay": 0.8999999999999999,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Amazing fancy gourmet food in a tower",
+                "id": 4,
+                "price": 42,
+                "rating": 1,
+                "tags": Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                  "8",
+                ],
+                "title": "The Roof",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "4",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Relaxation to the max..."
+                id={5}
+                price={129}
+                rating={4}
+                tags={
+                  Array [
+                    "2",
+                    "7",
+                  ]
+                }
+                title="Massage at Spavia"
+              />,
+              "delay": 1.2,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Relaxation to the max...",
+                "id": 5,
+                "price": 129,
+                "rating": 4,
+                "tags": Array [
+                  "2",
+                  "7",
+                ],
+                "title": "Massage at Spavia",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "5",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="There's gotta be something interesting out...right?"
+                id={6}
+                price={9.99}
+                rating={2.5}
+                tags={
+                  Array [
+                    "2",
+                    "6",
+                  ]
+                }
+                title="Movie"
+              />,
+              "delay": 1.5,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "There's gotta be something interesting out...right?",
+                "id": 6,
+                "price": 9.99,
+                "rating": 2.5,
+                "tags": Array [
+                  "2",
+                  "6",
+                ],
+                "title": "Movie",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "6",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Spend an hour trying to figure out how to escape a room"
+                id={7}
+                price={30}
+                rating={5}
+                tags={
+                  Array [
+                    "2",
+                    "9",
+                  ]
+                }
+                title="Mystery Escape Room"
+              />,
+              "delay": 1.7999999999999998,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Spend an hour trying to figure out how to escape a room",
+                "id": 7,
+                "price": 30,
+                "rating": 5,
+                "tags": Array [
+                  "2",
+                  "9",
+                ],
+                "title": "Mystery Escape Room",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "7",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Korean BBQ. Nuff' said."
+                id={8}
+                price={10}
+                rating={3.5}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "4",
+                    "6",
+                  ]
+                }
+                title="Cup Bop"
+              />,
+              "delay": 2.1,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Korean BBQ. Nuff' said.",
+                "id": 8,
+                "price": 10,
+                "rating": 3.5,
+                "tags": Array [
+                  "1",
+                  "2",
+                  "4",
+                  "6",
+                ],
+                "title": "Cup Bop",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "8",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Unlimted, freshly grilled, gourmet meats."
+                id={9}
+                price={30}
+                rating={3.5}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "5",
+                    "7",
+                  ]
+                }
+                title="Tucanos"
+              />,
+              "delay": 2.4,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Unlimted, freshly grilled, gourmet meats.",
+                "id": 9,
+                "price": 30,
+                "rating": 3.5,
+                "tags": Array [
+                  "1",
+                  "2",
+                  "5",
+                  "7",
+                ],
+                "title": "Tucanos",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "9",
+            "nodeType": "class",
+            "props": Object {
+              "children": <withRouter()
+                description="Fresh Italian styled pizza and gelato."
+                id={10}
+                price={20}
+                rating={3.5}
+                tags={
+                  Array [
+                    "1",
+                    "2",
+                    "5",
+                  ]
+                }
+                title="Settebellos"
+              />,
+              "delay": 2.6999999999999997,
+              "lg": 8,
+              "md": 12,
+              "sm": 24,
+              "xl": 6,
+              "xs": 24,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "description": "Fresh Italian styled pizza and gelato.",
+                "id": 10,
+                "price": 20,
+                "rating": 3.5,
+                "tags": Array [
+                  "1",
+                  "2",
+                  "5",
+                ],
+                "title": "Settebellos",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
