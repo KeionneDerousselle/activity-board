@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import PropsRoute from '../common/PropsRoute';
 import { css } from 'react-emotion';
 import { Row, Col } from 'antd';
 import { MainLayout } from '../layout';
@@ -85,7 +86,7 @@ class Activity extends React.Component {
                     path="/activity/edit/:id"
                     component={ManageActivity}
                   />
-                  <Route
+                  <PropsRoute
                     exact
                     path="/activity/:id"
                     tags={tagsArray}
@@ -93,9 +94,7 @@ class Activity extends React.Component {
                     price={activity.price}
                     description={activity.description}
                     rating={activity.rating}
-                    render={props => {
-                      return <ActivityDetails {...props} />;
-                    }}
+                    component={ActivityDetails}
                   />
                 </Switch>
               </div>
