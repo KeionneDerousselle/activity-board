@@ -117,8 +117,7 @@ ManageActivity.propTypes = {
   tags: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   actions: PropTypes.shape({
-    saveActivity: PropTypes.func.isRequired,
-    fetchTagsIfNeeded: PropTypes.func.isRequired
+    saveActivity: PropTypes.func.isRequired
   }).isRequired
 };
 

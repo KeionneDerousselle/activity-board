@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/styles.css';
 
 import { Route, Switch } from 'react-router-dom';
-import { ActivitiesDashboard, ManageActivity, Activity } from './activities';
+import { ActivitiesDashboard, Activity } from './activities';
 
 const App = () =>
   <Switch>
@@ -17,14 +17,9 @@ const App = () =>
       component={ActivitiesDashboard} 
     />
     <Route 
-      exact
-      path="/activity/:id"
+      path="/activity"
       component={Activity}
     />    
-    <Route
-      path="/activity/"
-      component={ManageActivity}
-    />
     <Route
       exact
       path="/"

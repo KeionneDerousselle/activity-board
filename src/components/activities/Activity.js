@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import { css } from 'react-emotion';
 import { Row, Col } from 'antd';
 import { MainLayout } from '../layout';
 import ActivityDetails from './ActivityDetails';
+import ManageActivity from './ManageActivity';
 
 const mdSizing = {
   span: 16,
@@ -44,11 +46,16 @@ class Activity extends React.Component {
   render() {
     const { activity, activityIsFetching } = this.state;
     const { tags } = this.props;
+    let tagsArray = [];
 
     const tagsObj = tags.items.reduce((result, item) => {
       result[item.id] = item.name;
       return result;
     }, {});
+
+    if (activity && activity.tags) {
+      tagsArray = activity.tags.map(t => tagsObj[t]);
+    }
 
     return (
       <MainLayout
@@ -67,13 +74,30 @@ class Activity extends React.Component {
                 <div className={headerClass}>
                   <h1>{activity.title}</h1>
                 </div>
-                <ActivityDetails
-                  tags={tagsObj}
-                  img={activity.img}
-                  price={activity.price}
-                  description={activity.description}
-                  rating={activity.rating}
-                />
+                <Switch>
+                  <Route
+                    exact
+                    path="/activity"
+                    component={ManageActivity}
+                  />
+                  <Route
+                    exact
+                    path="/activity/edit/:id"
+                    component={ManageActivity}
+                  />
+                  <Route
+                    exact
+                    path="/activity/:id"
+                    tags={tagsArray}
+                    img={activity.img}
+                    price={activity.price}
+                    description={activity.description}
+                    rating={activity.rating}
+                    render={props => {
+                      return <ActivityDetails {...props} />;
+                    }}
+                  />
+                </Switch>
               </div>
             </Col>
           </Row>
@@ -86,10 +110,7 @@ class Activity extends React.Component {
 Activity.propTypes = {
   activity: PropTypes.object,
   activityIsFetching: PropTypes.bool.isRequired,
-  tags: PropTypes.object.isRequired,
-  actions: PropTypes.shape({
-    fetchTagsIfNeeded: PropTypes.func.isRequired
-  }).isRequired
+  tags: PropTypes.object.isRequired
 };
 
 const getActivityById = (activities, id) =>
