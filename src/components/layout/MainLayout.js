@@ -25,7 +25,7 @@ const MainLayout = ({content, isContentLoading, header, footer}) => {
       </Footer>
     </InnerLayout>
   );
-}
+};
 
 MainLayout.propTypes = {
   content: PropTypes.node.isRequired,

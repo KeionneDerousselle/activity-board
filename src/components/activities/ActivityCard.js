@@ -5,14 +5,11 @@ import ActivityCardContent from './ActivityCardContent';
 import { Card, Icon, Tooltip } from 'antd';
 const { Meta } = Card;
 
-// TODO: create price component with dollar signs
-// TODO: save images for activities
-
 const cardBodyStyles = {
   padding: 20
 };
 
-const Activity = withRouter(
+const ActivityCard = withRouter(
   ({ history, ...activity }) =>
     <Card
       bodyStyle={cardBodyStyles}
@@ -47,7 +44,7 @@ const Activity = withRouter(
     </Card>
 );
 
-Activity.propTypes = {
+ActivityCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   rating: PropTypes.number,
@@ -55,4 +52,4 @@ Activity.propTypes = {
   price: PropTypes.number
 };
 
-export default Activity;
+export default ActivityCard;

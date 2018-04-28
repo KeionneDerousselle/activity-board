@@ -8,8 +8,6 @@ import { Row, Col, Input } from 'antd';
 const { Search } = Input;
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchActivitiesIfNeeded } from '../activities/activityActions';
 
 const activityTypes = [
   'Outdoor',
@@ -51,16 +49,11 @@ class ActivitiesDashboard extends React.Component {
 }
 
 ActivitiesDashboard.propTypes = {
-  activities: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  activities: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   activities: state.activities
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ fetchActivitiesIfNeeded }, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActivitiesDashboard);
+export default connect(mapStateToProps)(ActivitiesDashboard);
