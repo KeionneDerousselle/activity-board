@@ -17,7 +17,6 @@ const App = () =>
       component={ActivitiesDashboard} 
     />
     <Route 
-      exact
       path="/activity/:id"
       component={Activity}
     />    

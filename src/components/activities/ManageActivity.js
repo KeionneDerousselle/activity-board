@@ -12,17 +12,13 @@ class ManageActivity extends React.Component {
     super(props, context);
     this.state = {
       activity: { ...props.activity },
-      saving: false,
-      title: props.activity.id ? props.activity.title : 'Create An Activity'
+      saving: false
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.activity.id !== nextProps.activity.id) {
-      this.setState({
-        activity: { ...nextProps.activity },
-        title: nextProps.activity.id ? nextProps.activity.title : 'Create An Activity'
-      });
+      this.setState({ activity: { ...nextProps.activity } });
     }
   }
 
@@ -86,28 +82,18 @@ class ManageActivity extends React.Component {
   }
 
   render() {
-    const tags = this.props.tags.items.reduce((result, item) => {
-      result[item.id] = item.name;
-      return result;
-    }, {});
-
     return (
-      <div>
-        <div className="headerClass">
-          <h1>{this.state.title}</h1>
-        </div>
-        <ActivityForm
-          activity={this.state.activity}
-          tags={tags}
-          onChange={this.handleFormOnChange}
-          onSubmit={this.handleFormOnSubmit}
-          saving={this.state.saving}
-          onImageUploading={this.handleImageUploading}
-          onImageUploadSucceeded={this.handleImageUploadSucceeded}
-          onImageUploadFailed={this.handleImageUploadFailed}
-          imageUploadUrl="//jsonplaceholder.typicode.com/posts/"
-        />
-      </div>
+      <ActivityForm
+        activity={this.state.activity}
+        tags={this.props.tags}
+        onChange={this.handleFormOnChange}
+        onSubmit={this.handleFormOnSubmit}
+        saving={this.state.saving}
+        onImageUploading={this.handleImageUploading}
+        onImageUploadSucceeded={this.handleImageUploadSucceeded}
+        onImageUploadFailed={this.handleImageUploadFailed}
+        imageUploadUrl="//jsonplaceholder.typicode.com/posts/"
+      />
     );
   }
 }
@@ -125,33 +111,8 @@ ManageActivity.contextTypes = {
   router: PropTypes.object
 };
 
-const getActivityById = (activities, id) =>
-  activities.find(activity => activity.id === id);
-
-const mapStateToProps = (state, ownProps) => {
-  const activityId = parseInt(ownProps.match.params.id, 10);
-  let activity = {
-    title: '',
-    price: 0,
-    description: '',
-    rating: 0,
-    tags: [],
-  };
-
-  const activities = state.activities.items;
-
-  if (activityId && activities.length > 0) {
-    activity = getActivityById(activities, activityId);
-  }
-
-  return {
-    activity: activity,
-    tags: state.tags
-  };
-};
-
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ saveActivity }, dispatch)
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ManageActivity));
+export default withRouter(connect(null, mapDispatchToProps)(ManageActivity));

@@ -46,17 +46,19 @@ class Activity extends React.Component {
         title={activity.title}
         content={
           <Switch>
-            <Route
-              exact
-              path="/activity/:id/edit"
-              component={ManageActivity}
-            />
             <PropsRoute
               exact
               path="/activity/:id"
               tags={tagsArray}
               activity={activity}
               component={ActivityDetails}
+            />
+            <PropsRoute
+              exact
+              path="/activity/:id/edit"
+              tags={tagsObj}
+              activity={activity}
+              component={ManageActivity}
             />
           </Switch>
         }
