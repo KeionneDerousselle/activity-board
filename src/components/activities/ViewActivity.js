@@ -1,20 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
-import { Row, Col, Rate, Tag } from 'antd';
+import { Row, Col, Rate, Tag, Divider, Button } from 'antd';
 import { toCurrency } from '../common/utils';
 
 const Rating = styled(Rate)({
   fontSize: 36
 });
 
-const FlexCol = styled(Col)({
+const CenteredCol = styled(Col)({
   display: 'flex',
   justifyContent: 'center'
 });
 
+const RightCol = styled(Col)({
+  display: 'flex',
+  justifyContent: 'flex-end',
+});
+
 const imgCss = css({
   width: '100%'
+});
+
+const editButtonCss = css({
+  marginRight: '10px'
 });
 
 const PaddedDiv = styled.div({
@@ -44,16 +53,16 @@ const ViewActivity = ({ ...props }) => {
   return (
     <div>
       <Row type="flex" justify="center">
-        <FlexCol span={24}>
+        <CenteredCol span={24}>
           <Rating
             allowHalf
             value={rating}
             disabled
           />
-        </FlexCol>
-        <FlexCol span={24}>
+        </CenteredCol>
+        <CenteredCol span={24}>
           <h2>{priceAsCurrency}</h2>
-        </FlexCol>
+        </CenteredCol>
       </Row>
 
       <img
@@ -67,6 +76,13 @@ const ViewActivity = ({ ...props }) => {
           <p>{description}</p>
         </PaddedDiv>
       </PaddedDiv>
+      <Divider/>
+      <Row>
+        <RightCol>
+          <Button className={editButtonCss} icon="edit">Edit</Button>
+          <Button icon="inbox">Archive</Button>
+        </RightCol>
+      </Row>
     </div>
   );
 };

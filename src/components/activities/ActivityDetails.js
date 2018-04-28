@@ -9,14 +9,13 @@ import EditActivity from './EditActivity';
 
 class ActivityDetails extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.activity !== nextProps.activity) {
-      return { activity: { ...nextProps.activity } };
+    // TODO: There's gotta be a better way to do this.
+    if (prevState !== nextProps) {
+      return {
+        activity: { ...nextProps.activity },
+        activityIsFetching: nextProps.activityIsFetching
+      };
     }
-
-    if (prevState.activityIsFetching !== nextProps.activityIsFetching) {
-      return { activityIsFetching: nextProps.activityIsFetching };
-    }
-
     return null;
   }
 
