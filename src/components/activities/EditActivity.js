@@ -11,13 +11,22 @@ class EditActivity extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      activity: { ...props.activity },
+      activity: props.activity ? 
+        { ...props.activity } : 
+        {
+          title: '',
+          img: '',
+          description: '',
+          price: 0,
+          rating: 0,
+          tags: []
+        },
       saving: false
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.activity.id !== nextProps.activity.id) {
+    if (this.props.activity !== nextProps.activity) {
       this.setState({ activity: { ...nextProps.activity } });
     }
   }
@@ -99,7 +108,7 @@ class EditActivity extends React.Component {
 }
 
 EditActivity.propTypes = {
-  activity: PropTypes.object.isRequired,
+  activity: PropTypes.object,
   tags: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
   actions: PropTypes.shape({
