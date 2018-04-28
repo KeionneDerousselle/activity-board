@@ -45,6 +45,7 @@ class ActivityDetails extends React.Component {
       <ActivityPageLayout
         isContentLoading={!activity || activityIsFetching || !tags || tags.isFetching}
         title={activity.title}
+        closable
         content={
           <Switch>
             <PropsRoute
