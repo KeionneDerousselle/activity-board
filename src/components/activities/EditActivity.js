@@ -7,28 +7,30 @@ import ActivityForm from './ActivityForm';
 import { notification } from 'antd';
 import { saveActivity } from './activityActions';
 
+const emptyActivity =
+  {
+    title: '',
+    img: '',
+    description: '',
+    price: 0,
+    rating: 0,
+    tags: []
+  };
+
 class EditActivity extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.activity !== nextProps.activity) {
+      return { activity: nextProps.activity ? { ...nextProps.activity } : emptyActivity};
+    }
+    return null;
+  }
+
   constructor(props, context) {
     super(props, context);
     this.state = {
-      activity: props.activity ? 
-        { ...props.activity } : 
-        {
-          title: '',
-          img: '',
-          description: '',
-          price: 0,
-          rating: 0,
-          tags: []
-        },
+      activity: props.activity ? { ...props.activity } : emptyActivity,
       saving: false
     };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.activity !== nextProps.activity) {
-      this.setState({ activity: { ...nextProps.activity } });
-    }
   }
 
   handleFormOnChange = (name, value) => {

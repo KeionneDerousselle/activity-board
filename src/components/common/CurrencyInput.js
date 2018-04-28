@@ -4,18 +4,17 @@ import { toCurrency, toNumber } from './utils';
 import { InputNumber } from 'antd';
 
 class CurrencyInput extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.price !== nextProps.price) return { price: toCurrency(nextProps.price) };
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
     this.state = {
       price: toCurrency(props.price)
     };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.price !== nextProps.price) {
-      this.setState({ price: toCurrency(nextProps.price) });
-    }
   }
 
   handlePriceChange = price => this.setState({ price: price });

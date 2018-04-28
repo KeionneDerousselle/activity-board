@@ -8,22 +8,24 @@ import ViewActivity from './ViewActivity';
 import EditActivity from './EditActivity';
 
 class ActivityDetails extends React.Component {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.activity !== nextProps.activity) {
+      return { activity: { ...nextProps.activity } };
+    }
+
+    if (prevState.activityIsFetching !== nextProps.activityIsFetching) {
+      return { activityIsFetching: nextProps.activityIsFetching };
+    }
+
+    return null;
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       activity: { ...props.activity },
       activityIsFetching: props.activityIsFetching
     };
-  }
-
-  // getDerivedPropsFromState
-  componentWillReceiveProps(nextProps) {
-    if (this.props.activity !== nextProps.activity) {
-      this.setState({ activity: { ...nextProps.activity } });
-    }
-    if (this.props.activityIsFetching !== nextProps.activityIsFetching) {
-      this.setState({ activityIsFetching: nextProps.activityIsFetching });
-    }
   }
 
   render() {
