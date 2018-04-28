@@ -3,27 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import PropsRoute from '../common/PropsRoute';
-import { css } from 'react-emotion';
-import { Row, Col } from 'antd';
-import { MainLayout } from '../layout';
+import { ActivityPageLayout } from '../layout';
 import ActivityDetails from './ActivityDetails';
 import ManageActivity from './ManageActivity';
-
-const mdSizing = {
-  span: 16,
-  offset: 4
-};
-
-const smSizing = {
-  span: 22,
-  offset: 1
-};
-
-const headerClass = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
-});
 
 class Activity extends React.Component {
   constructor(props) {
@@ -59,47 +41,24 @@ class Activity extends React.Component {
     }
 
     return (
-      <MainLayout
+      <ActivityPageLayout
         isContentLoading={!activity || activityIsFetching || !tags || tags.isFetching}
+        title={activity.title}
         content={
-          <Row>
-            <Col
-              xs={smSizing}
-              sm={smSizing}
-              md={mdSizing}
-              lg={mdSizing}
-              xl={mdSizing}
-              xxl={mdSizing}
-            >
-              <div>
-                <div className={headerClass}>
-                  <h1>{activity.title}</h1>
-                </div>
-                <Switch>
-                  <Route
-                    exact
-                    path="/activity"
-                    component={ManageActivity}
-                  />
-                  <Route
-                    exact
-                    path="/activity/edit/:id"
-                    component={ManageActivity}
-                  />
-                  <PropsRoute
-                    exact
-                    path="/activity/:id"
-                    tags={tagsArray}
-                    img={activity.img}
-                    price={activity.price}
-                    description={activity.description}
-                    rating={activity.rating}
-                    component={ActivityDetails}
-                  />
-                </Switch>
-              </div>
-            </Col>
-          </Row>
+          <Switch>
+            <Route
+              exact
+              path="/activity/:id/edit"
+              component={ManageActivity}
+            />
+            <PropsRoute
+              exact
+              path="/activity/:id"
+              tags={tagsArray}
+              activity={activity}
+              component={ActivityDetails}
+            />
+          </Switch>
         }
       />
     );
