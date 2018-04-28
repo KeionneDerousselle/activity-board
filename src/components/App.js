@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/styles.css';
 
 import { Route, Switch } from 'react-router-dom';
-import { ActivitiesDashboard, Activity } from './activities';
+import { ActivitiesDashboard, ActivityDetails } from './activities';
 
 const App = () =>
   <Switch>
@@ -18,8 +18,8 @@ const App = () =>
     />
     <Route 
       path="/activity/:id"
-      component={Activity}
-    />    
+      component={ActivityDetails}
+    />
     <Route
       exact
       path="/"

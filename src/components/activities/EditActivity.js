@@ -7,7 +7,7 @@ import ActivityForm from './ActivityForm';
 import { notification } from 'antd';
 import { saveActivity } from './activityActions';
 
-class ManageActivity extends React.Component {
+class EditActivity extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -98,7 +98,7 @@ class ManageActivity extends React.Component {
   }
 }
 
-ManageActivity.propTypes = {
+EditActivity.propTypes = {
   activity: PropTypes.object.isRequired,
   tags: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
@@ -107,7 +107,7 @@ ManageActivity.propTypes = {
   }).isRequired
 };
 
-ManageActivity.contextTypes = {
+EditActivity.contextTypes = {
   router: PropTypes.object
 };
 
@@ -115,4 +115,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ saveActivity }, dispatch)
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(ManageActivity));
+export default withRouter(connect(null, mapDispatchToProps)(EditActivity));

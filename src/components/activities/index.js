@@ -1,9 +1,8 @@
 export { default as Activities } from './Activities';
-export { default as Activity } from './Activity';
+export { default as ActivityDetails } from './ActivityDetails';
 export { default as ActivityCard } from './ActivityCard';
 export { default as ActivityCardContent } from './ActivityCardContent';
 export { default as activitiesReducer } from './activitiesReducer';
-export { default as ManageActivity } from './ManageActivity';
+export { default as EditActivity } from './EditActivity';
 export { default as ActivitiesDashboard} from './ActivitiesDashboard';
-
-
+export { default as ViewActivity } from './ViewActivity';
