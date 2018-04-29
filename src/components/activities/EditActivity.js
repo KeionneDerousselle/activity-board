@@ -20,7 +20,7 @@ const emptyActivity =
 class EditActivity extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (prevState.activity !== nextProps.activity) {
-      return { activity: nextProps.activity ? { ...nextProps.activity } : emptyActivity};
+      return { activity: nextProps.activity ? { ...nextProps.activity } : emptyActivity };
     }
     return null;
   }
