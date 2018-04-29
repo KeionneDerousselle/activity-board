@@ -79,8 +79,14 @@ const ViewActivity = ({ ...props }) => {
       <Divider/>
       <Row>
         <RightCol>
-          <Button className={editButtonCss} icon="edit">Edit</Button>
-          <Button icon="inbox">Archive</Button>
+          <Button
+            type="primary"
+            className={editButtonCss}
+            icon="edit"
+          >
+            Edit
+          </Button>
+          <Button type="primary" icon="inbox">Archive</Button>
         </RightCol>
       </Row>
     </div>
