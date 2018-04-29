@@ -1,57 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { TagInput, CurrencyInput, ImageUploader } from '../common';
 import { Form, Input, Button, Rate } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
-
-const labelColSm = { span: 24 };
-const wrapperColSm = { span: 24 };
-
-const labelColMd = { span: 4 };
-const wrapperColMd = { span: 18 };
-
-const formItemLayout = {
-  labelCol: {
-    xs: labelColSm,
-    sm: labelColSm,
-    md: labelColMd,
-    lg: labelColMd,
-    xl: labelColMd,
-    xxl: labelColMd
-  },
-
-  wrapperCol: {
-    xs: wrapperColSm,
-    sm: wrapperColSm,
-    md: wrapperColMd,
-    lg: wrapperColMd,
-    xl: wrapperColMd,
-    xxl: wrapperColMd
-  }
-};
-
-const formTailSm = {
-  span: 24,
-  offset: 0
-};
-
-const formTailMd = {
-  span: 18,
-  offset: 4
-};
-
-const formTailLayout = {
-  wrapperCol: {
-    xs: formTailSm,
-    sm: formTailSm,
-    md: formTailMd,
-    lg: formTailMd,
-    xl: formTailMd,
-    xxl: formTailMd
-  }
-};
 
 const textAreaAutoSize = {
   minRows: 2,
@@ -60,6 +13,11 @@ const textAreaAutoSize = {
 
 const StyledCurrencyInput = styled(CurrencyInput)({
   width: '100%'
+});
+
+const flexEnd = css({
+  display: 'flex',
+  justifyContent: 'flex-end'
 });
 
 class ActivityForm extends React.Component {
@@ -83,11 +41,8 @@ class ActivityForm extends React.Component {
       } = this.props;
 
     return (
-      <Form onSubmit={onSubmit}>
-        <FormItem
-          {...formItemLayout}
-          label="Title"
-        >
+      <Form onSubmit={onSubmit} layout="vertical">
+        <FormItem label="Title">
           <Input
             name="title"
             size="large"
@@ -96,10 +51,7 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Activity Image"
-        >
+        <FormItem label="Activity Image">
           <ImageUploader
             name="img"
             onUploading={onImageUploading}
@@ -109,10 +61,7 @@ class ActivityForm extends React.Component {
           />
 
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Price"
-        >
+        <FormItem label="Price">
           <StyledCurrencyInput
             name="price"
             size="large"
@@ -121,10 +70,7 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Tags"
-        >
+        <FormItem label="Tags">
           <TagInput
             name="tags"
             size="large"
@@ -134,10 +80,7 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Description"
-        >
+        <FormItem label="Description">
           <TextArea
             name="description"
             onChange={this.handleChange}
@@ -146,10 +89,7 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Rating"
-        >
+        <FormItem label="Rating">
           <Rate
             allowHalf
             onChange={value => onChange('rating', value)}
@@ -157,7 +97,7 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem {...formTailLayout}>
+        <FormItem className={flexEnd}>
           <Button
             type="primary"
             onClick={onSubmit}

@@ -4,6 +4,11 @@ import { cx, css } from 'react-emotion';
 import { Row, Col, Icon } from 'antd';
 import MainLayout from './MainLayout';
 
+const lgSizing = {
+  span: 12,
+  offset: 6
+};
+
 const mdSizing = {
   span: 16,
   offset: 4
@@ -51,9 +56,9 @@ const ActivityPageLayout = ({ content, isContentLoading, header, footer, title, 
             xs={smSizing}
             sm={smSizing}
             md={mdSizing}
-            lg={mdSizing}
-            xl={mdSizing}
-            xxl={mdSizing}
+            lg={lgSizing}
+            xl={lgSizing}
+            xxl={lgSizing}
           >
             <Fragment>
               {closable && closeBar}
