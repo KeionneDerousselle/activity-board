@@ -30,6 +30,12 @@ const PaddedDiv = styled.div({
   padding: '20px 0'
 });
 
+const CustomTag = styled(Tag)({
+  cursor: 'default',
+  color: '#108ee9',
+  borderColor: '#108ee9'
+});
+
 const ViewActivity = ({ ...props }) => {
   const {img, price, description, rating} = props.activity;
   const { tags, onArchiveClick, onEditClick } = props;
@@ -40,13 +46,12 @@ const ViewActivity = ({ ...props }) => {
   const tagsContent = tags.map((t, i) => {
     const isLongTag = t.length > 20;
     return (
-      <Tag
+      <CustomTag
         key={i}
-        color="#108ee9"
         closable={false}
       >
         {isLongTag ? `${t.slice(0, 20)}...` : t}
-      </Tag>
+      </CustomTag>
     );
   });
 
