@@ -34,6 +34,10 @@ const closeClass = cx(flexClass, css({
   justifyContent: 'flex-end'
 }));
 
+const clickable = css({
+  cursor: 'pointer'
+});
+
 const ActivityPageLayout = ({ content, isContentLoading, header, footer, title, closable, onClose }) => {
   const titleContent = 
     <div className={headerClass}>
@@ -43,7 +47,11 @@ const ActivityPageLayout = ({ content, isContentLoading, header, footer, title, 
   
   const closeBar = 
     <div className={closeClass}>
-      <Icon type="close" onClick={() => {if(onClose) onClose();}}/>
+      <Icon 
+        className={clickable}
+        type="close"
+        onClick={() => {if(onClose) onClose();}}
+      />
     </div>;
 
   return (

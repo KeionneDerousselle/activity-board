@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 import PropsRoute from '../common/PropsRoute';
 import { ActivityPageLayout } from '../layout';
 import ViewActivity from './ViewActivity';
@@ -27,6 +27,34 @@ class ActivityDetails extends React.Component {
     };
   }
 
+  navigateToEdit = () => {
+    const { history, activity } = this.props;
+    history.push(`/activity/${activity.id}/edit`);
+  }
+
+  navigateToDashboard = () => {
+    this.props.history.push('/activities');
+  }
+
+  navigateToView = () => {
+    const { history, activity } = this.props;
+    history.push(`/activity/${activity.id}`);
+  }
+
+  currentPage = () => this.props.location.pathname.endsWith('edit') ? 'edit' : 'view';
+
+  handleEditClicked = () => {
+    this.navigateToEdit();
+  }
+
+  handleEditPageClosed = () => {
+    this.navigateToView();
+  }
+
+  handleArchiveClicked = () => {
+    alert('Clicked Archive!');
+  }
+
   render() {
     const { activity, activityIsFetching } = this.state;
     const { tags } = this.props;
@@ -41,11 +69,14 @@ class ActivityDetails extends React.Component {
       tagsArray = activity.tags.map(t => tagsObj[t]);
     }
 
+    const onClose = this.currentPage() === 'edit' ? this.navigateToView : this.navigateToDashboard;
+
     return (
       <ActivityPageLayout
         isContentLoading={!activity || activityIsFetching || !tags || tags.isFetching}
         title={activity.title}
         closable
+        onClose={onClose}
         content={
           <Switch>
             <PropsRoute
@@ -53,6 +84,8 @@ class ActivityDetails extends React.Component {
               path="/activity/:id"
               tags={tagsArray}
               activity={activity}
+              onEditClick={this.handleEditClicked}
+              onArchiveClick={this.handleArchiveClicked}
               component={ViewActivity}
             />
             <PropsRoute
@@ -72,6 +105,8 @@ class ActivityDetails extends React.Component {
 ActivityDetails.propTypes = {
   activity: PropTypes.object,
   activityIsFetching: PropTypes.bool.isRequired,
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   tags: PropTypes.object.isRequired
 };
 
@@ -90,4 +125,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(ActivityDetails);
+export default withRouter(connect(mapStateToProps)(ActivityDetails));
