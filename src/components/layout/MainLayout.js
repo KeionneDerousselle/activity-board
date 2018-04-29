@@ -8,18 +8,25 @@ import { Layout } from 'antd';
 const InnerLayout = styled(Layout)({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%'
+  width: '100%',
+  margin: 0
 });
 
-const MainLayout = ({content, isContentLoading, header, footer}) => {
+const Div = styled.div({
+  flex: '1 0 auto'
+});
+
+const MainLayout = ({ content, isContentLoading, header, footer }) => {
   return (
     <InnerLayout>
-      <Header>
-        {header}
-      </Header>
-      <ContentContainer isLoading={isContentLoading}>
-        {content}
-      </ContentContainer>
+      <Div>
+        <Header>
+          {header}
+        </Header>
+        <ContentContainer isLoading={isContentLoading}>
+          {content}
+        </ContentContainer>
+      </Div>
       <Footer>
         {footer}
       </Footer>

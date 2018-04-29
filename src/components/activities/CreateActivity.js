@@ -18,6 +18,7 @@ class CreateActivity extends React.Component {
     return (
       <ActivityPageLayout
         title={title}
+        closable
         content={
           <EditActivity
             tags={tagsObj}

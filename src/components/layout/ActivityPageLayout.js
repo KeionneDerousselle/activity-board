@@ -1,8 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'react-emotion';
-import { Row, Col } from 'antd';
+import { cx, css } from 'react-emotion';
+import { Row, Col, Icon } from 'antd';
 import MainLayout from './MainLayout';
+
+const lgSizing = {
+  span: 12,
+  offset: 6
+};
 
 const mdSizing = {
   span: 16,
@@ -14,16 +19,39 @@ const smSizing = {
   offset: 1
 };
 
-const headerClass = css({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center'
+const flexClass = css({
+  display: 'flex'
 });
 
-const ActivityPageLayout = ({ content, isContentLoading, header, footer, title }) => {
+const headerClass = cx(flexClass, css({
+  flexClass,
+  alignItems: 'center',
+  justifyContent: 'center'
+}));
+
+const closeClass = cx(flexClass, css({
+  fontSize: 30,
+  justifyContent: 'flex-end'
+}));
+
+const clickable = css({
+  cursor: 'pointer'
+});
+
+const ActivityPageLayout = ({ content, isContentLoading, header, footer, title, closable, onClose }) => {
   const titleContent = 
     <div className={headerClass}>
       <h1>{title}</h1>
+      
+    </div>;
+  
+  const closeBar = 
+    <div className={closeClass}>
+      <Icon 
+        className={clickable}
+        type="close"
+        onClick={() => {if(onClose) onClose();}}
+      />
     </div>;
 
   return (
@@ -36,11 +64,12 @@ const ActivityPageLayout = ({ content, isContentLoading, header, footer, title }
             xs={smSizing}
             sm={smSizing}
             md={mdSizing}
-            lg={mdSizing}
-            xl={mdSizing}
-            xxl={mdSizing}
+            lg={lgSizing}
+            xl={lgSizing}
+            xxl={lgSizing}
           >
             <Fragment>
+              {closable && closeBar}
               {title && titleContent}
               {content}
             </Fragment>
@@ -56,7 +85,9 @@ ActivityPageLayout.propTypes = {
   content: PropTypes.node.isRequired,
   isContentLoading: PropTypes.bool,
   header: PropTypes.node,
-  footer: PropTypes.node
+  footer: PropTypes.node,
+  closable: PropTypes.bool,
+  onClose: PropTypes.func
 };
 
 export default ActivityPageLayout;
