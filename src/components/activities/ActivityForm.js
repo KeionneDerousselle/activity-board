@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'react-emotion';
 import { TagInput, CurrencyInput, ImageUploader } from '../common';
-import { Form, Input, Button, Rate } from 'antd';
+import { Form, Input, Button, Rate, Divider } from 'antd';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
@@ -15,7 +15,7 @@ const StyledCurrencyInput = styled(CurrencyInput)({
   width: '100%'
 });
 
-const flexEnd = css({
+const Div = styled.div({
   display: 'flex',
   justifyContent: 'flex-end'
 });
@@ -97,14 +97,17 @@ class ActivityForm extends React.Component {
             disabled={saving}
           />
         </FormItem>
-        <FormItem className={flexEnd}>
-          <Button
-            type="primary"
-            onClick={onSubmit}
-            loading={saving}
-          >
-            Submit
-          </Button>
+        <Divider />
+        <FormItem>
+          <Div>
+            <Button
+              type="primary"
+              onClick={onSubmit}
+              loading={saving}
+            >
+              Submit
+            </Button>
+          </Div>
         </FormItem>
       </Form>
     );
