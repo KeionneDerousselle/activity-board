@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 
 import { configureStore } from './store';
 import { Provider } from 'react-redux';
-import { fetchActivitiesIfNeeded } from './components/activities/activityActions';
+import { fetchActivitiesIfNeeded } from './components/activities/actions/activity.actions';
 import { fetchTagsIfNeeded } from './components/tags/tagActions';
 
 import { Routes } from './components/routes';

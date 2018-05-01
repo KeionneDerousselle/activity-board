@@ -4,9 +4,9 @@ import {
   REQUEST_ACTIVITIES_FAILED, 
   CREATE_ACTIVITY_SUCCESS,
   UPDATE_ACTIVITY_SUCCESS
-} from './activityActions';
+} from '../actions/activity.actions';
 
-import initialState from '../../store/initialState';
+import initialState from '../../../store/initialState';
 
 const activitiesReducer = (state = initialState.activities, action) => {
   switch(action.type) {

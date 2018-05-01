@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import ActivityForm from './ActivityForm';
 import { notification } from 'antd';
-import { saveActivity } from './activityActions';
+import { saveActivity } from './actions/activity.actions';
 
 const emptyActivity =
   {

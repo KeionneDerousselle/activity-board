@@ -11,6 +11,7 @@ export default {
     items: []
   },
   filters: {
+    title: '',
     price: {
       min: 0,
       max: 0

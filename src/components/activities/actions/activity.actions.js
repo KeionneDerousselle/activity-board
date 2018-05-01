@@ -1,5 +1,5 @@
 
-import ActivityApi from '../../api/mockActivityApi';
+import ActivityApi from '../../../api/mockActivityApi';
 
 export const REQUEST_ACTIVITIES = 'REQUEST_ACTIVITIES';
 export const requestActivities = () => ({
