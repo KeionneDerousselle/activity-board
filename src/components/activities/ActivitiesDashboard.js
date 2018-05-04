@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { SidebarLayout } from '../layout';
 import { FilterBar } from '../common/filters';
-import Activities from './Activities';
+import VisibleActivities from './VisibleActivities';
 import { Row, Col, Input } from 'antd';
 const { Search } = Input;
 
@@ -41,7 +41,7 @@ class ActivitiesDashboard extends React.Component {
           </Row>
         }
         sidebar={<FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />}
-        content={<Activities activities={activities.items} />}
+        content={<VisibleActivities />}
         isContentLoading={!activities || activities.isFetching}
       />
     );
