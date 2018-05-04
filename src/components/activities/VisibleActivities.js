@@ -39,7 +39,7 @@ class VisibleActivities extends React.Component {
     let filtered = [...activities];
 
     if(activityFilters.title && activityFilters.title.length > 0) {
-      filtered = activities.filter(a => a.title.contains(activityFilters.title));
+      filtered = activities.filter(a => a.title.toLocaleLowerCase().includes(activityFilters.title.toLocaleLowerCase()));
     }
 
     return filtered;

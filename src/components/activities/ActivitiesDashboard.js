@@ -8,6 +8,8 @@ import { Row, Col, Input } from 'antd';
 const { Search } = Input;
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { searchByTitle } from './actions/activities.visibility.actions';
 
 const activityTypes = [
   'Outdoor',
@@ -25,6 +27,11 @@ const priceRanges = [
 ];
 
 class ActivitiesDashboard extends React.Component {
+
+  handleSearchByTitle = value => {
+    this.props.actions.searchByTitle(value);
+  }
+
   render() {
     const { activities } = this.props;
 
@@ -35,7 +42,7 @@ class ActivitiesDashboard extends React.Component {
             <Col span={22}>
               <Search
                 placeholder="Search Activities"
-                onSearch={value => console.log(value)}
+                onSearch={this.handleSearchByTitle}
               />
             </Col>
           </Row>
@@ -49,11 +56,16 @@ class ActivitiesDashboard extends React.Component {
 }
 
 ActivitiesDashboard.propTypes = {
-  activities: PropTypes.object.isRequired
+  activities: PropTypes.object.isRequired,
+  actions: PropTypes.shape({ searchByTitle: PropTypes.func.isRequired }).isRequired
 };
 
 const mapStateToProps = state => ({
   activities: state.activities
 });
 
-export default connect(mapStateToProps)(ActivitiesDashboard);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ searchByTitle }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActivitiesDashboard);
