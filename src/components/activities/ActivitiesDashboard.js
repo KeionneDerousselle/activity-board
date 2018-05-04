@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { SidebarLayout } from '../layout';
+import { MainLayout } from '../layout';
 import { FilterBar } from '../common/filters';
 import VisibleActivities from './VisibleActivities';
 import { Row, Col, Input } from 'antd';
@@ -36,7 +36,7 @@ class ActivitiesDashboard extends React.Component {
     const { activities } = this.props;
 
     return (
-      <SidebarLayout
+      <MainLayout
         header={
           <Row type="flex" justify="space-around">
             <Col span={22}>
