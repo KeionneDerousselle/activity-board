@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 import { TagInput, CurrencyInput, ImageUploader } from '../common';
 import { Form, Input, Button, Rate, Divider } from 'antd';
 const FormItem = Form.Item;
