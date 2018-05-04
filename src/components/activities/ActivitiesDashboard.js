@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { MainLayout } from '../layout';
 import { FilterBar } from '../common/filters';
 import VisibleActivities from './VisibleActivities';
-import { Row, Col, Input } from 'antd';
+import { Input } from 'antd';
 const { Search } = Input;
 
 import { connect } from 'react-redux';
@@ -27,7 +27,6 @@ const priceRanges = [
 ];
 
 class ActivitiesDashboard extends React.Component {
-
   handleSearchByTitle = value => {
     this.props.actions.searchByTitle(value);
   }
@@ -38,14 +37,10 @@ class ActivitiesDashboard extends React.Component {
     return (
       <MainLayout
         header={
-          <Row type="flex" justify="space-around">
-            <Col span={22}>
-              <Search
-                placeholder="Search Activities"
-                onSearch={this.handleSearchByTitle}
-              />
-            </Col>
-          </Row>
+          <Search
+            placeholder="Search Activities"
+            onSearch={this.handleSearchByTitle}
+          />
         }
         sidebar={<FilterBar activityTypes={activityTypes} priceRanges={priceRanges} />}
         content={<VisibleActivities />}
