@@ -6,6 +6,7 @@ import PropsRoute from '../common/PropsRoute';
 import { ActivityPageLayout } from '../layout';
 import ViewActivity from './ViewActivity';
 import EditActivity from './EditActivity';
+import ArchiveActivity from './ArchiveActivitiy';
 
 class ActivityDetails extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -32,6 +33,11 @@ class ActivityDetails extends React.Component {
     history.push(`/activity/${activity.id}/edit`);
   }
 
+  navigateToArchive = () => {
+    const { history, activity } = this.props;
+    history.push(`/activity/${activity.id}/archive`);
+  }
+
   navigateToDashboard = () => {
     this.props.history.push('/activities');
   }
@@ -41,7 +47,10 @@ class ActivityDetails extends React.Component {
     history.push(`/activity/${activity.id}`);
   }
 
-  currentPage = () => this.props.location.pathname.endsWith('edit') ? 'edit' : 'view';
+  onViewPage = () => {
+    const { activity } = this.props;
+    return !activity || !activity.id || this.props.location.pathname.endsWith(`${activity.id}`);
+  }
 
   handleEditClicked = () => {
     this.navigateToEdit();
@@ -52,7 +61,7 @@ class ActivityDetails extends React.Component {
   }
 
   handleArchiveClicked = () => {
-    alert('Clicked Archive!');
+    this.navigateToArchive();
   }
 
   render() {
@@ -69,7 +78,7 @@ class ActivityDetails extends React.Component {
       tagsArray = activity.tags.map(t => tagsObj[t]);
     }
 
-    const onClose = this.currentPage() === 'edit' ? this.navigateToView : this.navigateToDashboard;
+    const onClose = this.onViewPage() ? this.navigateToDashboard : this.navigateToView;
 
     return (
       <ActivityPageLayout
@@ -94,6 +103,12 @@ class ActivityDetails extends React.Component {
               tags={tagsObj}
               activity={activity}
               component={EditActivity}
+            />
+            <PropsRoute
+              exact
+              path="/activity/:id/archive"
+              activity={activity}
+              component={ArchiveActivity}
             />
           </Switch>
         }

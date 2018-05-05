@@ -79,7 +79,8 @@ const ActivityPageLayout = ({ content, isContentLoading, header, footer, title, 
       footer={footer}
     />
   );
-}
+};
+
 ActivityPageLayout.propTypes = {
   title: PropTypes.string,
   content: PropTypes.node.isRequired,

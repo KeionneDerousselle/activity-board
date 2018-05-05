@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
-
-import { Layout } from 'antd';
+import { Link, withRouter } from 'react-router-dom';
+import styled, { css } from 'react-emotion';
+import MediaQuery from 'react-responsive';
+import { Layout, Row, Col, Icon } from 'antd';
 const AntDHeader = Layout.Header;
 
 const headerStyles = css({
@@ -12,16 +13,39 @@ const headerStyles = css({
   fontSize: 14,
 });
 
-const Header = ({ children }) =>
+const HomeIcon = styled(Icon)({
+  fontSize: 26,
+  cursor: 'pointer'
+});
+
+const Header = ({ children, history }) =>
   <AntDHeader
     className={headerStyles}
     mode="horizontal"
   >
-    {children}
+    <Row type="flex" justify="space-around">
+      <MediaQuery maxWidth={768}>
+        <Col span={1} offset={1}>
+          <HomeIcon type="home" onClick={() => history.push('/activities')} />
+        </Col>
+        <Col span={19}>
+          {children}
+        </Col>
+      </MediaQuery>
+      <MediaQuery minWidth={769}>
+        <Col span={3}>
+          <Link to="/activities">Activity Board</Link>
+        </Col>
+        <Col span={20}>
+          {children}
+        </Col>
+      </MediaQuery>
+    </Row>
   </AntDHeader>;
 
 Header.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  history: PropTypes.object.isRequired
 };
 
-export default Header;
+export default withRouter(Header);
