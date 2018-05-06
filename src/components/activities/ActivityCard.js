@@ -22,7 +22,7 @@ class ActivityCard extends React.Component {
 
   handleArchiveActivityClicked = event => {
     this.navigateToArchiveActivity();
-    event.preventDefault();    
+    event.stopPropagation();
   }
 
   render() {
