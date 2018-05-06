@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Form, InputNumber, Button, Divider, Select, DatePicker } from 'antd';
+import moment from 'moment';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -11,40 +12,78 @@ const Div = styled.div({
   justifyContent: 'flex-end'
 });
 
+const dateFormat = 'MM/DD/YYYY';
+
 class ArchiveForm extends React.Component {
   state = {
     inputDate: true,
-    timePeriod: 'day',
-    timePeriodAmount: 0
+    timePeriod: 'days',
+    timePeriodAmount: 0,
+    untilDate: ''
   };
 
   handleArchiveTypeChange = archiveType => this.setState({ inputDate: archiveType === 'until' });
 
-  handleUntilDateChange = value => console.log(value);
+  handleUntilDateChange = (dateAsMoment, dateString) => {
+    const selectedArchiveDate = moment(dateString, dateFormat);
+    // const archiveoffset = selectedArchiveDate.utcOffset();
+    const startOfArchiveDate = selectedArchiveDate.startOf('day');
 
-  handleForTimePeriodChange = value => console.log(value);
+    // const now = moment().utcOffset(archiveoffset);
 
-  handleForTimePeriodAmountChange = value => console.log(value);
+    // console.log(`is same or after: ${selectedArchiveDate.isSameOrAfter(now, 'day')}`);
+    // console.log(`${selectedArchiveDate.toString()}`);
+    // console.log(`${startOfArchiveDate.toString()}`);
+
+    // if(then.isBefore(now, 'day')) ...validation error...can only pick today or later
+    // if(then.isBefore(now, 'day')) ... remove from suggestions and dashboard
+    // if(then.isSame(now, 'day')) ... display on dashboard, add back to suggestions
+
+    this.setState({ untilDate: startOfArchiveDate });
+  }
+
+  handleForTimePeriodChange = value => this.setState({ timePeriod: value });
+
+  handleForTimePeriodAmountChange = value => this.setState({ timePeriodAmount: value });
+
+  handleOnSubmit = () => {
+    const { inputDate, untilDate, timePeriod, timePeriodAmount } = this.state;
+    const { onSubmit } = this.props;
+    const displayFormat = 'dddd, MMM Do YYYY';
+
+    let archivalDate = inputDate ? untilDate : this.getArchivalDate();
+    const displayDate = archivalDate.format(displayFormat);
+    let archivedUntilText = inputDate ? `until ${displayDate}` : `for ${timePeriodAmount} ${timePeriod}`;
+    
+    onSubmit(archivalDate, archivedUntilText, displayDate);
+  }
+
+  getArchivalDate = () => {
+    const { timePeriod, timePeriodAmount } = this.state;
+    const now = moment().startOf('day');
+    const archivalDate = now.add(timePeriodAmount, timePeriod);
+    return archivalDate;
+  }
 
   render() {
     const { inputDate } = this.state;
-    const { onSubmit, saving } = this.props;
+    const { saving } = this.props;
 
     const untilContent =
       <FormItem>
-        <DatePicker onChange={this.handleUntilDateChange} />
+        <DatePicker onChange={this.handleUntilDateChange} format={dateFormat} />
       </FormItem>;
 
     const forContent =
       <Fragment>
         <FormItem>
-          <InputNumber min={1} onChange={this.handleForTimePeriodAmountChange}/>
+          <InputNumber min={1} onChange={this.handleForTimePeriodAmountChange} />
         </FormItem>
         <FormItem>
-          <Select defaultValue="day" onChange={this.handleForTimePeriodChange}>
-            <Option value="day">day(s)</Option>
-            <Option value="week">week(s)</Option>
-            <Option value="month">month(s)</Option>
+          <Select defaultValue="days" onChange={this.handleForTimePeriodChange}>
+            <Option value="days">day(s)</Option>
+            <Option value="weeks">week(s)</Option>
+            <Option value="months">month(s)</Option>
           </Select>
         </FormItem>
       </Fragment>;
@@ -62,7 +101,7 @@ class ArchiveForm extends React.Component {
         <Div>
           <Button
             type="primary"
-            onClick={onSubmit}
+            onClick={this.handleOnSubmit}
             loading={saving}
           >
             Submit
