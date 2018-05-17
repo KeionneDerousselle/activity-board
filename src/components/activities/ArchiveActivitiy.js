@@ -3,18 +3,68 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveActivity } from './actions/activity.actions';
+import moment from 'moment';
 import ArchiveForm from './ArchiveForm';
 import { Modal, notification } from 'antd';
 const confirm = Modal.confirm;
 
+const initialArchiveState = {
+  type: 'until',
+  timePeriodAmount: 0,
+  timePeriod: 'days',
+  date: null
+};
 
 class ArchiveActivity extends React.Component {
-  state = {
-    saving: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      saving: false,
+      activity: props.activity,
+      archive: initialArchiveState
+    };
   }
 
-  handleOnSubmit = (archiveDate, archivedUntilText, displayDate) => {
+  untilDateWasSelected = () => this.state.archive.type === 'until';
+
+  handleOnChange = (name, value) => {
+    const { archive } = this.state;
+    this.setState({
+      archive: {
+        ...archive,
+        [name]: value
+      }
+    });
+  }
+
+  calculateArchiveDate = () => {
+    const { archive: { timePeriod, timePeriodAmount } } = this.state;
+    const now = moment().startOf('day');
+    const archiveDate = now.add(timePeriodAmount, timePeriod);
+    return archiveDate;
+  }
+
+  getArchiveDate = untilDateWasSelected => {
+    const { archive: { date } } = this.state;
+    const archivalDate = untilDateWasSelected ?
+      date.startOf('day') :
+      this.calculateArchiveDate();
+    return archivalDate;
+  }
+
+  handleOnSubmit = () => {
+    const { archive: { timePeriod, timePeriodAmount } } = this.state;
     const { activity } = this.props;
+
+    const untilDateWasSelected = this.untilDateWasSelected();
+    const archiveDate = this.getArchiveDate(untilDateWasSelected);
+
+    const displayFormat = 'dddd, MMM Do YYYY';
+    const displayDate = archiveDate.format(displayFormat);
+    const archivedUntilText = untilDateWasSelected ? `until ${displayDate}` : `for ${timePeriodAmount} ${timePeriod}`;
+
+    this.setState({ saving: true });
 
     confirm({
       title: 'Are you sure?',
@@ -22,12 +72,15 @@ class ArchiveActivity extends React.Component {
       okText: 'Yes',
       cancelText: 'No',
       onOk: () => this.archiveActivity(archiveDate),
-      onCancel() {
-        // TODO: handle clear form
-        alert('Cancel');
+      onCancel: () => {
+        this.setState({
+          saving: false,
+          archive: initialArchiveState
+        });
       },
     });
   }
+
   redirect = () => {
     const { activity, history } = this.props;
     history.push(`/activity/${activity.id}`);
@@ -64,10 +117,13 @@ class ArchiveActivity extends React.Component {
   };
 
   render() {
+    const { archive, saving } = this.state;
     return (
       <ArchiveForm
-        activity={this.props.activity}
+        archive={archive}
         onSubmit={this.handleOnSubmit}
+        onChange={this.handleOnChange}
+        saving={saving}
       />
     );
   }

@@ -17,7 +17,7 @@ class VisibleActivities extends React.Component {
     if(prevState.activityFilters !== nextProps.activityFilters) {
       newState = {
         ...newState,
-        activityFilters: nextProps.filtactivityFiltersers
+        activityFilters: nextProps.activityFilters
       };
     }
 
