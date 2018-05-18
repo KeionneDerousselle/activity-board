@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Form, InputNumber, Button, Divider, Select, DatePicker } from 'antd';
+import moment from 'moment';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -11,40 +12,50 @@ const Div = styled.div({
   justifyContent: 'flex-end'
 });
 
+const dateFormat = 'MM/DD/YYYY';
+
 class ArchiveForm extends React.Component {
-  state = {
-    inputDate: true,
-    timePeriod: 'day',
-    timePeriodAmount: 0
-  };
+  handleUntilDateChange = (dateAsMoment) => {
+    const { onChange } = this.props;
+    // const archiveoffset = selectedArchiveDate.utcOffset();
+    onChange('date', dateAsMoment);
+    // const now = moment().utcOffset(archiveoffset);
 
-  handleArchiveTypeChange = archiveType => this.setState({ inputDate: archiveType === 'until' });
+    // console.log(`is same or after: ${selectedArchiveDate.isSameOrAfter(now, 'day')}`);
+    // console.log(`${selectedArchiveDate.toString()}`);
+    // console.log(`${startOfArchiveDate.toString()}`);
 
-  handleUntilDateChange = value => console.log(value);
-
-  handleForTimePeriodChange = value => console.log(value);
-
-  handleForTimePeriodAmountChange = value => console.log(value);
+    // if(then.isBefore(now, 'day')) ...validation error...can only pick today or later
+    // if(then.isBefore(now, 'day')) ... remove from suggestions and dashboard
+    // if(then.isSame(now, 'day')) ... display on dashboard, add back to suggestions
+  }
 
   render() {
-    const { inputDate } = this.state;
-    const { onSubmit, saving } = this.props;
+    const { saving, onChange, archive, onSubmit } = this.props;
 
     const untilContent =
       <FormItem>
-        <DatePicker onChange={this.handleUntilDateChange} />
+        <DatePicker 
+          value={archive.date}
+          onChange={this.handleUntilDateChange} 
+          format={dateFormat} 
+        />
       </FormItem>;
 
     const forContent =
       <Fragment>
         <FormItem>
-          <InputNumber min={1} onChange={this.handleForTimePeriodAmountChange}/>
+          <InputNumber 
+            min={1}
+            value={archive.timePeriodAmount}
+            onChange={value => onChange('timePeriodAmount', value)} 
+          />
         </FormItem>
         <FormItem>
-          <Select defaultValue="day" onChange={this.handleForTimePeriodChange}>
-            <Option value="day">day(s)</Option>
-            <Option value="week">week(s)</Option>
-            <Option value="month">month(s)</Option>
+          <Select value={archive.timePeriod} onChange={value => onChange('timePeriod', value)}>
+            <Option value="days">day(s)</Option>
+            <Option value="weeks">week(s)</Option>
+            <Option value="months">month(s)</Option>
           </Select>
         </FormItem>
       </Fragment>;
@@ -52,12 +63,12 @@ class ArchiveForm extends React.Component {
     return (
       <Form layout="inline">
         <FormItem colon={false} label="Archive this activity">
-          <Select defaultValue="until" onChange={this.handleArchiveTypeChange}>
+          <Select value={archive.type} onChange={value => onChange('type', value)}>
             <Option value="until">until</Option>
             <Option value="for">for</Option>
           </Select>
         </FormItem>
-        {inputDate ? untilContent : forContent}
+        {archive.type === 'until' ? untilContent : forContent}
         <Divider />
         <Div>
           <Button
@@ -74,9 +85,10 @@ class ArchiveForm extends React.Component {
 }
 
 ArchiveForm.propTypes = {
-  activity: PropTypes.object.isRequired,
+  archive: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  saving: PropTypes.bool
+  onChange: PropTypes.func.isRequired,
+  saving: PropTypes.bool,
 };
 
 const WrappedForm = Form.create()(ArchiveForm);
