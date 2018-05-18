@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { saveActivity } from './actions/activity.actions';
+import { saveActivity } from '../activities/actions/activity.actions';
 import moment from 'moment';
 import ArchiveForm from './ArchiveForm';
 import { Modal, notification } from 'antd';
@@ -15,7 +15,7 @@ const initialArchiveState = {
   date: null
 };
 
-class ArchiveActivity extends React.Component {
+class EditArchive extends React.Component {
   constructor(props) {
     super(props);
 
@@ -64,6 +64,8 @@ class ArchiveActivity extends React.Component {
     const displayDate = archiveDate.format(displayFormat);
     const archivedUntilText = untilDateWasSelected ? `until ${displayDate}` : `for ${timePeriodAmount} ${timePeriod}`;
 
+    const archiveDateAsString = archiveDate.format();
+
     this.setState({ saving: true });
 
     confirm({
@@ -71,7 +73,7 @@ class ArchiveActivity extends React.Component {
       content: `You are about to archive ${activity.title} ${archivedUntilText}. This means ${activity.title} will not be shown on the activities dashboard or be suggested until ${displayDate}.`,
       okText: 'Yes',
       cancelText: 'No',
-      onOk: () => this.archiveActivity(archiveDate),
+      onOk: () => this.archiveActivity(archiveDateAsString),
       onCancel: () => {
         this.setState({
           saving: false,
@@ -130,7 +132,7 @@ class ArchiveActivity extends React.Component {
   }
 }
 
-ArchiveActivity.propTypes = {
+EditArchive.propTypes = {
   activity: PropTypes.object.isRequired,
   saveActivity: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
@@ -140,4 +142,4 @@ const mapDispatchToProps = {
   saveActivity
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(ArchiveActivity));
+export default withRouter(connect(null, mapDispatchToProps)(EditArchive));

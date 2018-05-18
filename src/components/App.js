@@ -3,25 +3,30 @@ import '../styles/styles.css';
 
 import { Route, Switch } from 'react-router-dom';
 import { ActivitiesDashboard, ActivityDetails, CreateActvity } from './activities';
+import { ArchiveActivity } from './archive';
 
 const App = () =>
   <Switch>
     <Route
       exact
       path="/home"
-      component={ActivitiesDashboard} 
+      component={ActivitiesDashboard}
     />
     <Route
       exact
       path="/activities"
-      component={ActivitiesDashboard} 
+      component={ActivitiesDashboard}
     />
     <Route
       exact
       path="/activity/create"
       component={CreateActvity}
     />
-    <Route 
+    <Route
+      path="/activity/:id/archive"
+      component={ArchiveActivity}
+    />
+    <Route
       path="/activity/:id"
       component={ActivityDetails}
     />

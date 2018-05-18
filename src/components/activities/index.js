@@ -8,6 +8,4 @@ export { default as EditActivity } from './EditActivity';
 export { default as ActivitiesDashboard } from './ActivitiesDashboard';
 export { default as ViewActivity } from './ViewActivity';
 export { default as CreateActvity } from './CreateActivity';
-export { default as ArchiveActivity } from './ArchiveActivitiy';
-export { default as ArchiveForm } from './ArchiveForm';
-export { default as ViewArchive } from './ViewArchive';
+
