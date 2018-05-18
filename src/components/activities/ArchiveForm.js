@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Form, InputNumber, Button, Divider, Select, DatePicker } from 'antd';
-import moment from 'moment';
 
 const FormItem = Form.Item;
 const Option = Select.Option;

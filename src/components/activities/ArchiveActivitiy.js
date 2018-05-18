@@ -118,6 +118,7 @@ class ArchiveActivity extends React.Component {
 
   render() {
     const { archive, saving } = this.state;
+
     return (
       <ArchiveForm
         archive={archive}
