@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, withRouter } from 'react-router-dom';
-import PropsRoute from '../common/PropsRoute';
+import { PropsRoute, ConditionalRoute } from '../common';
 import { ActivityPageLayout } from '../layout';
 import EditArchive from './EditArchive';
 import ViewArchive from './ViewArchive';
@@ -26,8 +26,13 @@ class ArchiveActivity extends React.Component {
   }
 
   navigateToEdit = () => {
-    const { history, activity } = this.props;
-    history.push(`/activity/${activity.id}/archive/edit`);
+    const editArchiveUrl = this.getEditArchiveUrl();
+    history.push(editArchiveUrl);
+  }
+
+  getEditArchiveUrl = () => {
+    const { activity: { id } } = this.props;
+    return `/activity/${id}/archive/edit`;
   }
 
   navigateToView = () => {
@@ -42,6 +47,7 @@ class ArchiveActivity extends React.Component {
     const { activity } = this.state;
     const title = activity ? activity.title : '';
     const date = activity ? activity.archivedUntil : '';
+    const editUrl = activity ? this.getEditArchiveUrl() : '';
 
     return (
       <ActivityPageLayout
@@ -51,12 +57,14 @@ class ArchiveActivity extends React.Component {
         onClose={this.handleOnClose}
         content={
           <Switch>
-            <PropsRoute
+            <ConditionalRoute
               exact
               path="/activity/:id/archive"
               archiveDate={date}
               onEdit={this.navigateToEdit}
+              condition={() => date ? true : false}
               component={ViewArchive}
+              redirect={editUrl}
             />
             <PropsRoute
               exact
