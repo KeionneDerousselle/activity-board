@@ -24,11 +24,6 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^4.0.0-alpha.0",
-    "@storybook/addon-links": "^4.0.0-alpha.0",
-    "@storybook/addons": "^4.0.0-alpha.0",
-    "@storybook/cli": "4.0.0-alpha.0",
-    "@storybook/react": "^4.0.0-alpha.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
@@ -68,9 +63,7 @@
     "start:dev": "npm-run-all --parallel webpack:dev webpack:devserver",
     "webpack:dev": "webpack --mode development --config webpack.dev.js --watch",
     "webpack:devserver": "webpack-dev-server --mode development --open --config webpack.dev.js",
-    "test": "jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
