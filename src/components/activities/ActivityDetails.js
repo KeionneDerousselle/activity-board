@@ -6,7 +6,6 @@ import PropsRoute from '../common/PropsRoute';
 import { ActivityPageLayout } from '../layout';
 import ViewActivity from './ViewActivity';
 import EditActivity from './EditActivity';
-import ArchiveActivity from './ArchiveActivitiy';
 
 class ActivityDetails extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -28,23 +27,28 @@ class ActivityDetails extends React.Component {
     };
   }
 
-  navigateToEdit = () => {
+  navigateToViewActivity = () => {
+    const { history, activity } = this.props;
+    history.push(`/activity/${activity.id}`);
+  }
+
+  navigateToEditActivity = () => {
     const { history, activity } = this.props;
     history.push(`/activity/${activity.id}/edit`);
   }
 
-  navigateToArchive = () => {
+  navigateToViewArchive = () => {
     const { history, activity } = this.props;
     history.push(`/activity/${activity.id}/archive`);
   }
 
-  navigateToDashboard = () => {
-    this.props.history.push('/activities');
+  navigateToEditArchive = () => {
+    const { history, activity } = this.props;
+    history.push(`/activity/${activity.id}/archive/edit`);
   }
 
-  navigateToView = () => {
-    const { history, activity } = this.props;
-    history.push(`/activity/${activity.id}`);
+  navigateToDashboard = () => {
+    this.props.history.push('/activities');
   }
 
   onViewPage = () => {
@@ -53,15 +57,20 @@ class ActivityDetails extends React.Component {
   }
 
   handleEditClicked = () => {
-    this.navigateToEdit();
+    this.navigateToEditActivity();
   }
 
   handleEditPageClosed = () => {
-    this.navigateToView();
+    this.navigateToViewActivity();
   }
 
   handleArchiveClicked = () => {
-    this.navigateToArchive();
+    const { activity: { archivedUntil } } = this.state;
+    if (archivedUntil) {
+      this.navigateToViewArchive();
+    } else {
+      this.navigateToEditArchive();
+    }
   }
 
   render() {
@@ -78,7 +87,7 @@ class ActivityDetails extends React.Component {
       tagsArray = activity.tags.map(t => tagsObj[t]);
     }
 
-    const onClose = this.onViewPage() ? this.navigateToDashboard : this.navigateToView;
+    const onClose = this.onViewPage() ? this.navigateToDashboard : this.navigateToViewActivity;
 
     return (
       <ActivityPageLayout
@@ -103,12 +112,6 @@ class ActivityDetails extends React.Component {
               tags={tagsObj}
               activity={activity}
               component={EditActivity}
-            />
-            <PropsRoute
-              exact
-              path="/activity/:id/archive"
-              activity={activity}
-              component={ArchiveActivity}
             />
           </Switch>
         }
