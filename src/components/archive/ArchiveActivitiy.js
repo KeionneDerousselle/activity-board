@@ -27,7 +27,7 @@ class ArchiveActivity extends React.Component {
 
   navigateToEdit = () => {
     const editArchiveUrl = this.getEditArchiveUrl();
-    history.push(editArchiveUrl);
+    this.props.history.push(editArchiveUrl);
   }
 
   getEditArchiveUrl = () => {
@@ -36,8 +36,8 @@ class ArchiveActivity extends React.Component {
   }
 
   navigateToView = () => {
-    const { history, activity } = this.props;
-    history.push(`/activity/${activity.id}/archive/`);
+    const { history, activity: { id } } = this.props;
+    history.push(`/activity/${id}/archive/`);
   }
 
   handleOnClose = () => console.log('Closed!');
