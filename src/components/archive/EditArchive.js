@@ -16,13 +16,47 @@ const initialArchiveState = {
 };
 
 class EditArchive extends React.Component {
+  static getArchiveState = archivedUntil => ({
+    type: initialArchiveState.type,
+    timePeriodAmount: initialArchiveState.timePeriodAmount,
+    timePeriod: initialArchiveState.timePeriod,
+    date: moment(archivedUntil, 'YYYY-MM-DD')
+  });
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.activity) {
+      const { activity, activity: { archivedUntil } } = nextProps;      
+      let newState = {};
+
+      if (prevState.activity !== activity) {
+        newState = {
+          ...newState,
+          activity: activity
+        };
+      }
+
+      if(prevState.activity.archivedUntil !== archivedUntil) {
+        newState = {
+          ...newState,
+          archive: archivedUntil ? 
+            EditArchive.getArchiveState(archivedUntil) :
+            initialArchiveState
+        };
+      }
+      return newState;
+    } 
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
+    const { activity, activity: { archivedUntil} } = props;
+
     this.state = {
       saving: false,
-      activity: props.activity,
-      archive: initialArchiveState
+      activity: activity,
+      archive: archivedUntil ? EditArchive.getArchiveState(archivedUntil) : initialArchiveState
     };
   }
 
