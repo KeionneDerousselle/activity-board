@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
 import environmentUrls from '../environment-urls';
-import { uuidv4 } from '../utils';
 
 const jsonHeaders = {
   'Content-Type': 'application/json'
@@ -17,18 +16,29 @@ class ActivityApi {
     }
   }
 
-  static saveActivity = async activity => {
+  static postActivity = async activity => {
     try {
-      let method = 'PUT';
+      const url = environmentUrls.local;
+      const response = await fetch(`${url}/activities/`, {
+        method: 'POST',
+        body: JSON.stringify(activity),
+        headers: jsonHeaders
+      });
 
-      if(!activity.id) {
-        method = 'POST';
-        activity.id = uuidv4();
-      }
-      
+      return {
+        status: response.status,
+        data: await response.json()
+      };
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  static putActivity = async activity => {
+    try {
       const url = environmentUrls.local;
       const response = await fetch(`${url}/activities/${activity.id}`, {
-        method: method,
+        method: 'PUT',
         body: JSON.stringify(activity),
         headers: jsonHeaders
       });

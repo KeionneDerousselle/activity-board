@@ -74,16 +74,54 @@ export const requestSaveActivityFailed = error => ({
 });
 
 export const saveActivity = activity =>
-  dispatch => {
-    dispatch(requestSaveActivity());
-    return ActivityApi.saveActivity(activity)
-      .then(activity => {
-        activity.data.id ?
-          dispatch(updateActivitySuccess(activity.data)) :
-          dispatch(createActivitySuccess(activity.data));
-      })
-      .catch(error => {
-        dispatch(requestSaveActivityFailed(error));
-        throw (error);
-      });
+  async dispatch => {
+    try {
+      dispatch(requestSaveActivity());
+      if (activity.id) {
+        await putActivity(activity, dispatch);
+      } else {
+        await postActivity(activity, dispatch);
+      }
+    } catch (error) {
+      throw error;
+    }
   };
+
+// TODO: Create a reducer factory
+const postActivity = async(activity, dispatch) => {
+  try {
+    const response = await ActivityApi.postActivity(activity);
+    switch (true) {
+      case response.status >= 200 && response.status < 300:
+        dispatch(createActivitySuccess(response.data));
+        break;
+      case response.status >= 300 && response.status < 500:
+        // dispatch bad request
+        break;
+      default:
+        dispatch(requestSaveActivityFailed(response));
+        break;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+const putActivity = async(activity, dispatch) => {
+  try {
+    const response = await ActivityApi.putActivity(activity);
+    switch (true) {
+      case response.status >= 200 && response.status < 300:
+        dispatch(updateActivitySuccess(response.data));
+        break;
+      case response.status >= 300 && response.status < 500:
+        // dispatch bad request
+        break;
+      default:
+        dispatch(requestSaveActivityFailed(response));
+        break;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
