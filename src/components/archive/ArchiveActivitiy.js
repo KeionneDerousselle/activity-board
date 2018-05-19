@@ -25,7 +25,7 @@ class ArchiveActivity extends React.Component {
     };
   }
 
-  navigateToEdit = () => {
+  navigateToEditArchive = () => {
     const editArchiveUrl = this.getEditArchiveUrl();
     this.props.history.push(editArchiveUrl);
   }
@@ -35,12 +35,17 @@ class ArchiveActivity extends React.Component {
     return `/activity/${id}/archive/edit`;
   }
 
-  navigateToView = () => {
+  navigateToViewArchive = () => {
     const { history, activity: { id } } = this.props;
     history.push(`/activity/${id}/archive/`);
   }
 
-  handleOnClose = () => console.log('Closed!');
+  navigateToViewActivity= () => {
+    const { history, activity: { id } } = this.props;
+    history.push(`/activity/${id}/`);
+  }
+
+  handleOnClose = () => this.navigateToViewActivity();
 
   render() {
     const { activityIsFetching } = this.props;
@@ -61,7 +66,7 @@ class ArchiveActivity extends React.Component {
               exact
               path="/activity/:id/archive"
               archiveDate={date}
-              onEdit={this.navigateToEdit}
+              onEdit={this.navigateToEditArchive}
               condition={() => date ? true : false}
               component={ViewArchive}
               redirect={editUrl}
