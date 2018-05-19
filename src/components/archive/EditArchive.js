@@ -128,8 +128,12 @@ class EditArchive extends React.Component {
     this.setState({ saving: true });
 
     saveActivity(activity)
-      .then(() => this.handleSaveArchiveSuccess())
-      .catch(() => this.handleSaveArchiveFailed());
+      .then(() => {
+        this.handleSaveArchiveSuccess();
+      })
+      .catch(() => {
+        this.handleSaveArchiveFailed();
+      });
   };
 
   handleSaveArchiveSuccess = () => {

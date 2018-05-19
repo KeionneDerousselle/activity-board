@@ -1,4 +1,4 @@
-import TagsApi from '../../api/mockTagsApi';
+import { TagsApi } from '../../api';
 
 export const REQUEST_TAGS = 'REQUEST_TAGS';
 export const requestTags = () => ({

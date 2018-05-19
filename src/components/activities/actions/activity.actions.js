@@ -1,5 +1,5 @@
 
-import ActivityApi from '../../../api/mockActivityApi';
+import { ActivityApi } from '../../../api';
 
 export const REQUEST_ACTIVITIES = 'REQUEST_ACTIVITIES';
 export const requestActivities = () => ({
@@ -22,7 +22,7 @@ export const requestForActivitiesFailed = error => ({
 export const fetchActivities = () =>
   dispatch => {
     dispatch(requestActivities());
-    
+
     return ActivityApi.getAllActivities()
       .then(activities => dispatch(receiveActivities(activities)))
       .catch(error => {
@@ -32,20 +32,20 @@ export const fetchActivities = () =>
   };
 
 const shouldFetchActivities = activities => {
-  if(activities.isFetching) {
+  if (activities.isFetching) {
     return false;
   }
 
-  if(!activities.items || activities.items.length === 0) {
+  if (!activities.items || activities.items.length === 0) {
     return true;
   }
-  
+
   return activities.didInvalidate;
 };
 
 export const fetchActivitiesIfNeeded = () =>
   (dispatch, getState) => {
-    if(shouldFetchActivities(getState().activities)) {
+    if (shouldFetchActivities(getState().activities)) {
       return dispatch(fetchActivities());
     }
   };
@@ -78,12 +78,12 @@ export const saveActivity = activity =>
     dispatch(requestSaveActivity());
     return ActivityApi.saveActivity(activity)
       .then(activity => {
-        activity.id ?
-          dispatch(updateActivitySuccess(activity)) :
-          dispatch(createActivitySuccess(activity));
+        activity.data.id ?
+          dispatch(updateActivitySuccess(activity.data)) :
+          dispatch(createActivitySuccess(activity.data));
       })
       .catch(error => {
         dispatch(requestSaveActivityFailed(error));
-        throw(error);
+        throw (error);
       });
   };

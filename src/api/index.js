@@ -1,2 +1,2 @@
-export { default as mockActivityApi } from './mockActivityApi';
-export { default as mockTagsApi } from './mockTagsApi';
+export { default as ActivityApi } from './activities/activities.api';
+export { default as TagsApi } from './tags/tags.api';
