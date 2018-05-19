@@ -1,5 +1,5 @@
 
-import ActivityApi from '../../../api/mockActivityApi';
+import { ActivityApi } from '../../../api';
 
 export const REQUEST_ACTIVITIES = 'REQUEST_ACTIVITIES';
 export const requestActivities = () => ({
@@ -22,7 +22,7 @@ export const requestForActivitiesFailed = error => ({
 export const fetchActivities = () =>
   dispatch => {
     dispatch(requestActivities());
-    
+
     return ActivityApi.getAllActivities()
       .then(activities => dispatch(receiveActivities(activities)))
       .catch(error => {
@@ -32,20 +32,20 @@ export const fetchActivities = () =>
   };
 
 const shouldFetchActivities = activities => {
-  if(activities.isFetching) {
+  if (activities.isFetching) {
     return false;
   }
 
-  if(!activities.items || activities.items.length === 0) {
+  if (!activities.items || activities.items.length === 0) {
     return true;
   }
-  
+
   return activities.didInvalidate;
 };
 
 export const fetchActivitiesIfNeeded = () =>
   (dispatch, getState) => {
-    if(shouldFetchActivities(getState().activities)) {
+    if (shouldFetchActivities(getState().activities)) {
       return dispatch(fetchActivities());
     }
   };
@@ -74,16 +74,54 @@ export const requestSaveActivityFailed = error => ({
 });
 
 export const saveActivity = activity =>
-  dispatch => {
-    dispatch(requestSaveActivity());
-    return ActivityApi.saveActivity(activity)
-      .then(activity => {
-        activity.id ?
-          dispatch(updateActivitySuccess(activity)) :
-          dispatch(createActivitySuccess(activity));
-      })
-      .catch(error => {
-        dispatch(requestSaveActivityFailed(error));
-        throw(error);
-      });
+  async dispatch => {
+    try {
+      dispatch(requestSaveActivity());
+      if (activity.id) {
+        await putActivity(activity, dispatch);
+      } else {
+        await postActivity(activity, dispatch);
+      }
+    } catch (error) {
+      throw error;
+    }
   };
+
+// TODO: Create a reducer factory
+const postActivity = async(activity, dispatch) => {
+  try {
+    const response = await ActivityApi.postActivity(activity);
+    switch (true) {
+      case response.status >= 200 && response.status < 300:
+        dispatch(createActivitySuccess(response.data));
+        break;
+      case response.status >= 300 && response.status < 500:
+        // dispatch bad request
+        break;
+      default:
+        dispatch(requestSaveActivityFailed(response));
+        break;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+const putActivity = async(activity, dispatch) => {
+  try {
+    const response = await ActivityApi.putActivity(activity);
+    switch (true) {
+      case response.status >= 200 && response.status < 300:
+        dispatch(updateActivitySuccess(response.data));
+        break;
+      case response.status >= 300 && response.status < 500:
+        // dispatch bad request
+        break;
+      default:
+        dispatch(requestSaveActivityFailed(response));
+        break;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
